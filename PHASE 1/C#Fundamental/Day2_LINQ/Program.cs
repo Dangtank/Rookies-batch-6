@@ -8,96 +8,194 @@ namespace DAY2_LINQ
             {
                 new Member
                 {
-                    FirstName = "Do",
-                    LastName = "Duc",
-                    Gender = "male",
+                    FirstName = "Bui",
+                    LastName = "Da",
+                    Gender = "Male",
+                    DateOfBirth = new DateTime(2001, 1, 1),
+                    PhoneNumber = "0123444333",
+                    BirthPlace = "HaNoi",
+                    IsGraduated = "No"
+                },
+                new Member
+                {
+                    FirstName = "Anh",
+                    LastName = "Tuan",
+                    Gender = "Male",
+                    DateOfBirth = new DateTime(1999, 1, 1),
+                    PhoneNumber = "0123444555",
+                    BirthPlace = "HaNoi",
+                    IsGraduated = "Yes"
+                },
+                new Member
+                {
+                    FirstName = "Dat",
+                    LastName = "Bui",
+                    Gender = "Male",
                     DateOfBirth = new DateTime(2000, 1, 1),
-                    BirthPlace = "HaNoi"
-                },
-                new Member
-                {
-                    FirstName = "Lam",
-                    LastName = "Kien",
-                    Gender = "male",
-                    DateOfBirth = new DateTime(1990, 1, 1),
-                    BirthPlace = "HaNoi"
-                },
-                new Member
-                {
-                    FirstName = "Hao",
-                    LastName = "Ngan",
-                    Gender = "male",
-                    DateOfBirth = new DateTime(2004, 1, 1),
-                    BirthPlace = "Vinh"
-                },
+                    PhoneNumber = "0123444444",
+                    BirthPlace = "HaNoi",
+                    IsGraduated = "Yes"
+                }
             };
 
-            Console.WriteLine("Cau1");
-            var maleMember = members.Where(m => m.Gender == "male").ToList();
-            maleMember.ForEach(m => Console.WriteLine(m.Info));
+            Console.WriteLine("Member Console App\n");
+            int option = 0;
 
-            Console.WriteLine("Cau2");
-            var MaxAge = members.Max(m => m.Age);
-
-            Member oldestMember = members.First(x => x.Age == MaxAge);
-
-            // Member oldestMember1 = members.FirstOrDefault(x => x.Age == MaxAge);
-
-            // var oldestMember2 = members.Where(x => x.Age == MaxAge).Take(1);
-
-            Console.WriteLine(oldestMember.Info);
-            // if (oldestMember != null)
-            // {
-            //     Console.WriteLine(oldestMember1.Info);
-            // }
-
-            // if (oldestMember2.Any())
-            // {
-            //     foreach (Member m in oldestMember2)
-            //     {
-            //         Console.WriteLine(m.Info);
-            //     }
-            // }
-
-            Console.WriteLine("Cau3");
-            // List<String> fullName = members.Select(m => m.FirstName + " " + m.LastName).ToList();
-            var fullName = members
-                .Select(m => new { FullName = m.FirstName + " " + m.LastName })
-                .ToList();
-            fullName.ForEach(m => Console.WriteLine(m.FullName));
-
-            Console.WriteLine("Cau4");
-
-            var YearOfBirth2000 = members.FindAll(m => m.DateOfBirth.Year == 2000);
-
-            var YearOfBirthGreater2000 = members.FindAll(m => m.DateOfBirth.Year > 2000);
-
-            var YearOfBirthLess2000 = members.FindAll(m => m.DateOfBirth.Year < 2000);
-
-            Console.WriteLine("Year Of Birth = 2000:");
-            foreach (var m in YearOfBirth2000)
+            do
             {
-                Console.WriteLine(m.Info);
-            }
+                Console.WriteLine("------------------------------------------------------------");
+                Console.WriteLine("1. Cau1: Return a list of members who is Male");
+                Console.WriteLine("2. Cau2: Return the oldest one based on “Age”");
+                Console.WriteLine("3. Cau3: Return a new list that contains Full Name only");
+                Console.WriteLine("4. Cau4: Return all member with 1 option");
+                Console.WriteLine("5. Cau5: Return the first person who was born in Ha Noi.");
+                Console.WriteLine("Other. Exit");
+                Console.WriteLine("Your option: ");
+                option = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Year Of Birth > 2000:");
-            foreach (var m in YearOfBirthGreater2000)
-            {
-                Console.WriteLine(m.Info);
-            }
+                switch (option)
+                {
+                    case 1:
 
-            Console.WriteLine("Year Of Birth < 2000:");
-            foreach (var m in YearOfBirthLess2000)
-            {
-                Console.WriteLine(m.Info);
-            }
+                        {
+                            Console.WriteLine(
+                                "------------------------------------------------------------"
+                            );
+                            Console.WriteLine("Cau1: Return a list of members who is Male\n");
+                            var maleMember = members.Where(m => m.Gender == "Male").ToList();
+                            maleMember.ForEach(m => Console.WriteLine(m.Info));
+                        }
+                        break;
+                    case 2:
 
-            Console.WriteLine("Cau5");
-            var BornHanoi = members.FindAll(m => m.BirthPlace == "HaNoi");
+                        {
+                            Console.WriteLine(
+                                "------------------------------------------------------------"
+                            );
+                            Console.WriteLine("Cau2: Return the oldest one based on “Age”\n");
+                            var MaxAge = members.Max(m => m.Age);
+                            Member oldestMember = members.First(x => x.Age == MaxAge);
+                            Console.WriteLine(oldestMember.Info);
+                        }
+                        break;
+                    case 3:
 
-            if (BornHanoi.Any()){
-                Console.WriteLine(BornHanoi.First().Info);
-            }
+                        {
+                            Console.WriteLine(
+                                "------------------------------------------------------------"
+                            );
+                            Console.WriteLine(
+                                "Cau3: Return a new list that contains Full Name only\n"
+                            );
+                            var fullName = members
+                                .Select(m => new { FullName = m.FirstName + " " + m.LastName })
+                                .ToList();
+                            fullName.ForEach(m => Console.WriteLine(m.FullName));
+                        }
+                        break;
+                    case 4:
+
+                        {
+                            Console.WriteLine(
+                                "------------------------------------------------------------"
+                            );
+                            Console.WriteLine("Cau4: Return all member with 1 option\n");
+                            var YearOfBirth2000 = members.FindAll(m => m.DateOfBirth.Year == 2000);
+                            var YearOfBirthGreater2000 = members.FindAll(
+                                m => m.DateOfBirth.Year > 2000
+                            );
+                            var YearOfBirthLess2000 = members.FindAll(
+                                m => m.DateOfBirth.Year < 2000
+                            );
+
+                            do
+                            {
+                                Console.WriteLine("1. List of members who has birth year is 2000");
+                                Console.WriteLine(
+                                    "2. List of members who has birth year greaterthan 2000"
+                                );
+                                Console.WriteLine(
+                                    "3. List of members who has birth year lessthan 2000"
+                                );
+                                Console.WriteLine("Other. Exit");
+                                Console.WriteLine("Your option: ");
+                                option = Convert.ToInt32(Console.ReadLine());
+
+                                switch (option)
+                                {
+                                    case 1:
+                                        Console.WriteLine(
+                                            "------------------------------------------------------------"
+                                        );
+
+                                        {
+                                            Console.WriteLine(
+                                                "\nList member birth year is 2000 : "
+                                            );
+
+                                            foreach (Member member in YearOfBirth2000)
+                                            {
+                                                Console.WriteLine(member.Info);
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+
+                                        {
+                                            Console.WriteLine(
+                                                "------------------------------------------------------------"
+                                            );
+
+                                            Console.WriteLine(
+                                                "\nList member birth year less 2000 :"
+                                            );
+
+                                            foreach (Member member in YearOfBirthLess2000)
+                                            {
+                                                Console.WriteLine(member.Info);
+                                            }
+                                        }
+                                        break;
+                                    case 3:
+
+                                        {
+                                            Console.WriteLine(
+                                                "------------------------------------------------------------"
+                                            );
+
+                                            Console.WriteLine(
+                                                "\nList member birth year more 2000 :"
+                                            );
+
+                                            foreach (Member member in YearOfBirthGreater2000)
+                                            {
+                                                Console.WriteLine(member.Info);
+                                            }
+                                        }
+                                        break;
+                                }
+                            } while (option >= 1 && option <= 3);
+                        }
+                        break;
+                    case 5:
+
+                        {
+                            Console.WriteLine(
+                                "------------------------------------------------------------"
+                            );
+                            Console.WriteLine(
+                                "Cau5: Return the first person who was born in Ha Noi.\n"
+                            );
+                            var BornHanoi = members.FindAll(m => m.BirthPlace == "HaNoi");
+
+                            if (BornHanoi.Any())
+                            {
+                                Console.WriteLine(BornHanoi.First().Info);
+                            }
+                        }
+                        break;
+                }
+            } while (option >= 1 && option <= 5);
         }
     }
 }
