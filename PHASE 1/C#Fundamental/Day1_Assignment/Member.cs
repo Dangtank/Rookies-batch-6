@@ -13,41 +13,37 @@ namespace Day1_Assignment
         public DateTime DateOfBirth { get; set; }
         public string? BirthPlace { get; set; }
         public string? PhoneNumber { get; set; }
-        public string? IsGraduated { get; set; }
+         public string? IsGraduated { get; set; }
         public string FullName
         {
-            get
-            {
-                return string.Format(FirstName + " " + LastName);
-            }
+            get { return string.Format(FirstName + " " + LastName); }
         }
         public int Age
         {
-            get
-            {
-                return DateTime.Now.Year - DateOfBirth.Year;
-            }
+            get { return DateTime.Now.Year - DateOfBirth.Year; }
         }
         public string Info
         {
             get
             {
-                return string.Format("First Name: {0}\r\n"
-                + "LastName: {1}\r\n"
-                + "Gender: {2}\r\n"
-                + "Date of Birth: {3}\r\n"
-                + "Phone Number: {4}\r\n"
-                + "BirthPlace: {5}\r\n"
-                + "Age: {6}\r\n"
-                + "IsGraduated: {7}\r\n"
-                , FirstName
-                , LastName
-                , Gender
-                , DateOfBirth
-                , PhoneNumber
-                , BirthPlace
-                , Age
-                , IsGraduated);
+                return string.Format(
+                    "First Name: {0}\r\n"
+                        + "LastName: {1}\r\n"
+                        + "Gender: {2}\r\n"
+                        + "Date of Birth: {3}\r\n"
+                        + "Phone Number: {4}\r\n"
+                        + "BirthPlace: {5}\r\n"
+                        + "Age: {6}\r\n"
+                        + "{7}\r\n",
+                    FirstName,
+                    LastName,
+                    Gender,
+                    DateOfBirth,
+                    PhoneNumber,
+                    BirthPlace,
+                    Age,
+                    IsGraduated
+                );
             }
         }
     }

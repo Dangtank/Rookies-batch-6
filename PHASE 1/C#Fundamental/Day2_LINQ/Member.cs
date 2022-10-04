@@ -34,7 +34,7 @@ namespace DAY2_LINQ
                 + "Phone Number: {4}\r\n"
                 + "BirthPlace: {5}\r\n"
                 + "Age: {6}\r\n"
-                + "IsGraduated: {7}\r\n"
+                + "{7}\r\n"
                 , FirstName
                 , LastName
                 , Gender
