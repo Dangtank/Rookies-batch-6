@@ -58,32 +58,26 @@ namespace DAY2_LINQ
                     case 1:
 
                         {
-                            Console.WriteLine(
-                                "------------------------------------------------------------"
-                            );
+                            Console.WriteLine("----------------");
                             Console.WriteLine("Cau1: Return a list of members who is Male\n");
-                            var maleMember = members.Where(m => m.Gender == "Male").ToList();
+                            var maleMember = members.FindAll(m => m.Gender == "Male").ToList();
                             maleMember.ForEach(m => Console.WriteLine(m.Info));
                         }
                         break;
                     case 2:
 
                         {
-                            Console.WriteLine(
-                                "------------------------------------------------------------"
-                            );
+                            Console.WriteLine("----------------");
                             Console.WriteLine("Cau2: Return the oldest one based on “Age”\n");
-                            var MaxAge = members.Max(m => m.Age);
-                            Member oldestMember = members.First(x => x.Age == MaxAge);
+                            var maxAge = members.Max(m => m.Age);
+                            Member oldestMember = members.First(x => x.Age == maxAge);
                             Console.WriteLine(oldestMember.Info);
                         }
                         break;
                     case 3:
 
                         {
-                            Console.WriteLine(
-                                "------------------------------------------------------------"
-                            );
+                            Console.WriteLine("----------------");
                             Console.WriteLine(
                                 "Cau3: Return a new list that contains Full Name only\n"
                             );
@@ -96,15 +90,13 @@ namespace DAY2_LINQ
                     case 4:
 
                         {
-                            Console.WriteLine(
-                                "------------------------------------------------------------"
-                            );
+                            Console.WriteLine("----------------");
                             Console.WriteLine("Cau4: Return all member with 1 option\n");
-                            var YearOfBirth2000 = members.FindAll(m => m.DateOfBirth.Year == 2000);
-                            var YearOfBirthGreater2000 = members.FindAll(
+                            var yearOfBirth2000 = members.FindAll(m => m.DateOfBirth.Year == 2000);
+                            var yearOfBirthGreater2000 = members.FindAll(
                                 m => m.DateOfBirth.Year > 2000
                             );
-                            var YearOfBirthLess2000 = members.FindAll(
+                            var yearOfBirthLess2000 = members.FindAll(
                                 m => m.DateOfBirth.Year < 2000
                             );
 
@@ -124,53 +116,37 @@ namespace DAY2_LINQ
                                 switch (option)
                                 {
                                     case 1:
-                                        Console.WriteLine(
-                                            "------------------------------------------------------------"
-                                        );
 
                                         {
+                                            Console.WriteLine("----------------");
                                             Console.WriteLine(
                                                 "\nList member birth year is 2000 : "
                                             );
-
-                                            foreach (Member member in YearOfBirth2000)
-                                            {
-                                                Console.WriteLine(member.Info);
-                                            }
+                                            yearOfBirth2000.ForEach(m => Console.WriteLine(m.Info));
                                         }
                                         break;
                                     case 2:
 
                                         {
-                                            Console.WriteLine(
-                                                "------------------------------------------------------------"
-                                            );
-
+                                            Console.WriteLine("----------------");
                                             Console.WriteLine(
                                                 "\nList member birth year less 2000 :"
                                             );
-
-                                            foreach (Member member in YearOfBirthLess2000)
-                                            {
-                                                Console.WriteLine(member.Info);
-                                            }
+                                            yearOfBirthLess2000.ForEach(
+                                                m => Console.WriteLine(m.Info)
+                                            );
                                         }
                                         break;
                                     case 3:
 
                                         {
-                                            Console.WriteLine(
-                                                "------------------------------------------------------------"
-                                            );
-
+                                            Console.WriteLine("----------------");
                                             Console.WriteLine(
                                                 "\nList member birth year more 2000 :"
                                             );
-
-                                            foreach (Member member in YearOfBirthGreater2000)
-                                            {
-                                                Console.WriteLine(member.Info);
-                                            }
+                                            yearOfBirthGreater2000.ForEach(
+                                                m => Console.WriteLine(m.Info)
+                                            );
                                         }
                                         break;
                                 }
@@ -180,17 +156,15 @@ namespace DAY2_LINQ
                     case 5:
 
                         {
-                            Console.WriteLine(
-                                "------------------------------------------------------------"
-                            );
+                            Console.WriteLine("----------------");
                             Console.WriteLine(
                                 "Cau5: Return the first person who was born in Ha Noi.\n"
                             );
-                            var BornHanoi = members.FindAll(m => m.BirthPlace == "HaNoi");
+                            var bornHanoi = members.SkipWhile(m => m.BirthPlace != "HaNoi");
 
-                            if (BornHanoi.Any())
+                            if (bornHanoi.Any())
                             {
-                                Console.WriteLine(BornHanoi.First().Info);
+                                Console.WriteLine(bornHanoi.First().Info);
                             }
                         }
                         break;
