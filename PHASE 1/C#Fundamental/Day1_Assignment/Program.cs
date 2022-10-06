@@ -14,7 +14,7 @@ namespace Day1_Assignment
                     DateOfBirth = new DateTime(2001, 1, 1),
                     PhoneNumber = "0123444333",
                     BirthPlace = "HaNoi",
-                    IsGraduated = "Ungraduated"
+                    IsGraduated = true
                 },
                 new Member
                 {
@@ -24,9 +24,9 @@ namespace Day1_Assignment
                     DateOfBirth = new DateTime(1999, 1, 1),
                     PhoneNumber = "0123444555",
                     BirthPlace = "HaNoi",
-                    IsGraduated = "Graduated"
+                    IsGraduated = false
                 },
-                new Member
+                new Member 
                 {
                     FirstName = "Dat",
                     LastName = "Bui",
@@ -34,7 +34,7 @@ namespace Day1_Assignment
                     DateOfBirth = new DateTime(2000, 1, 1),
                     PhoneNumber = "0123444444",
                     BirthPlace = "HaNoi",
-                    IsGraduated = "Graduated"
+                    IsGraduated = true
                 }
             };
 

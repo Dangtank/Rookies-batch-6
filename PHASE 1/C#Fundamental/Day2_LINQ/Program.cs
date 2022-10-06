@@ -13,8 +13,8 @@ namespace DAY2_LINQ
                     Gender = "Male",
                     DateOfBirth = new DateTime(2001, 1, 1),
                     PhoneNumber = "0123444333",
-                    BirthPlace = "HaNoi",
-                    IsGraduated = "Graduated"
+                    BirthPlace = "NinhBinh",
+                    IsGraduated = true
                 },
                 new Member
                 {
@@ -24,7 +24,7 @@ namespace DAY2_LINQ
                     DateOfBirth = new DateTime(1999, 1, 1),
                     PhoneNumber = "0123444555",
                     BirthPlace = "HaNoi",
-                    IsGraduated = "Graduated"
+                    IsGraduated = true
                 },
                 new Member
                 {
@@ -34,7 +34,7 @@ namespace DAY2_LINQ
                     DateOfBirth = new DateTime(2000, 1, 1),
                     PhoneNumber = "0123444444",
                     BirthPlace = "HaNoi",
-                    IsGraduated = "Ungraduated"
+                    IsGraduated = false
                 }
             };
 
@@ -92,8 +92,8 @@ namespace DAY2_LINQ
                         do
                         {
                             Console.WriteLine("1. List of members who has birth year is 2000");
-                            Console.WriteLine("2. List of members who has birth year > 2000");
-                            Console.WriteLine("3. List of members who has birth year < 2000");
+                            Console.WriteLine("2. List of members who has birth year < 2000");
+                            Console.WriteLine("3. List of members who has birth year > 2000");
                             Console.WriteLine("Other. Exit");
                             Console.WriteLine("Your option: ");
                             option = Convert.ToInt32(Console.ReadLine());

@@ -13,7 +13,7 @@ namespace Day1_Assignment
         public DateTime DateOfBirth { get; set; }
         public string? BirthPlace { get; set; }
         public string? PhoneNumber { get; set; }
-         public string? IsGraduated { get; set; }
+         public bool IsGraduated { get; set; }
         public string FullName
         {
             get { return string.Format(FirstName + " " + LastName); }
@@ -26,6 +26,8 @@ namespace Day1_Assignment
         {
             get
             {
+                string graduate = IsGraduated ? "Yes" : "No";
+
                 return string.Format(
                     "First Name: {0}\r\n"
                         + "LastName: {1}\r\n"
@@ -34,15 +36,15 @@ namespace Day1_Assignment
                         + "Phone Number: {4}\r\n"
                         + "BirthPlace: {5}\r\n"
                         + "Age: {6}\r\n"
-                        + "{7}\r\n",
+                        + "Isgraduated: {7}\r\n",
                     FirstName,
                     LastName,
-                    Gender,
+                    Gender, 
                     DateOfBirth,
                     PhoneNumber,
                     BirthPlace,
                     Age,
-                    IsGraduated
+                    graduate
                 );
             }
         }
