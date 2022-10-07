@@ -1,5 +1,3 @@
-using System;
-
 namespace Day3_EVENT
 {
     public class Clock

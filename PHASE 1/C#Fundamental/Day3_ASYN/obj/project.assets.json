@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\C#Fundamental\\Day3_ASYN\\Day3_ASYN.csproj",
+      "projectUniqueName": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\C#Fundamental\\Day3_ASYN\\Day3_ASYN.csproj",
       "projectName": "Day3_ASYN",
-      "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\C#Fundamental\\Day3_ASYN\\Day3_ASYN.csproj",
+      "projectPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\C#Fundamental\\Day3_ASYN\\Day3_ASYN.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\C#Fundamental\\Day3_ASYN\\obj\\",
+      "outputPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\C#Fundamental\\Day3_ASYN\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,0 +1,15 @@
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\bin\Debug\net6.0\Day3_EVENT.exe
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\bin\Debug\net6.0\Day3_EVENT.deps.json
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\bin\Debug\net6.0\Day3_EVENT.runtimeconfig.json
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\bin\Debug\net6.0\Day3_EVENT.dll
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\bin\Debug\net6.0\Day3_EVENT.pdb
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.csproj.AssemblyReference.cache
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.GeneratedMSBuildEditorConfig.editorconfig
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.AssemblyInfoInputs.cache
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.AssemblyInfo.cs
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.csproj.CoreCompileInputs.cache
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.dll
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\refint\Day3_EVENT.dll
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.pdb
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\Day3_EVENT.genruntimeconfig.cache
+D:\ROOKIES-6-GITHUB\Rookies-batch-6\PHASE 1\C#Fundamental\Day3_EVENT\obj\Debug\net6.0\ref\Day3_EVENT.dll
