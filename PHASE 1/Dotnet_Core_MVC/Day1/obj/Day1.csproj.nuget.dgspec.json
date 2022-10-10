@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj": {}
+  },
+  "projects": {
+    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
+        "projectName": "Day1",
+        "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
+        "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
+        "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[29.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
