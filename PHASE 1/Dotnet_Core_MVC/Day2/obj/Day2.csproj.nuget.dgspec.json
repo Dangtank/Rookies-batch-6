@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj": {}
+    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj": {}
   },
   "projects": {
-    "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj": {
+    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
-        "projectName": "Day1",
-        "projectPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
+        "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj",
+        "projectName": "Day2",
+        "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\obj\\",
+        "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,12 +37,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "CsvHelper": {
-              "target": "Package",
-              "version": "[29.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

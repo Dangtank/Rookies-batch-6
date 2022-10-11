@@ -50,11 +50,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
+      "projectUniqueName": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
       "projectName": "Day1",
-      "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
+      "projectPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\Day1.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\obj\\",
+      "outputPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"
