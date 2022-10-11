@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+
 <div class="text-center">
     <h1 class="display-4">Member List</h1>
     <div class="text-left mt-5 mb-3">
@@ -40,11 +40,11 @@
                         <a class="btn btn-link text-info font-weight-bold" asp-controller="Rookies" asp-action="Edit"
                         asp-route-index="@i"> Edit </a>
                         <a class="btn btn-link text-danger font-weight-bold" href="#" data-toggle="modal"
-                        data-target="#deleteComfirmationModal_@i">
+                        data-target="#deleteComfirmationModal">
                             Delete </a>
 
                         <!-- Modal -->
-                    <div class="modal fade" id="deleteComfirmationModal_@i" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="deleteComfirmationModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">

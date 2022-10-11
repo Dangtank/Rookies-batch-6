@@ -100,18 +100,18 @@ namespace Day2.Controllers
 
         [HttpPost]
 
-        public IActionResult Create(PersonModel personModel)
+        public IActionResult Create(PersonModelCreate personModelCreate)
         {
             if (ModelState.IsValid)
             {
                 var person = new PersonModel
                 {
-                    FirstName = personModel.FirstName,
-                    LastName = personModel.LastName,
-                    Gender = personModel.Gender,
-                    DateOfBirth = personModel.DateOfBirth,
-                    BirthPlace = personModel.BirthPlace,
-                    PhoneNumber = personModel.PhoneNumber,
+                    FirstName = personModelCreate.FirstName,
+                    LastName = personModelCreate.LastName,
+                    Gender = personModelCreate.Gender,
+                    DateOfBirth = personModelCreate.DateOfBirth,
+                    BirthPlace = personModelCreate.BirthPlace,
+                    PhoneNumber = personModelCreate.PhoneNumber,
                     IsGraduated = true
                 };
                 _people.Add(person);
@@ -119,7 +119,7 @@ namespace Day2.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(personModel);
+            return View(personModelCreate);
         }
 
         [HttpGet]
