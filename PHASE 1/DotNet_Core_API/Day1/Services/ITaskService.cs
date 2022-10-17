@@ -10,10 +10,10 @@ namespace Day1.Services
     {
         List<TaskModel> GetAll();
         TaskModel GetById(Guid id);
-        TaskModel Create(TaskModel taskModel);
+        TaskModel Add(TaskModel taskModel);
         TaskModel UpdateById(Guid id, TaskModel taskModel);
         TaskModel DeleteById(Guid id);
-        TaskModel DeleteByIds(List<Guid> ids);
+        bool DeleteByIds(List<Guid> ids);
         List<TaskModel> AddMulti(List<TaskModel> taskModels);
     }
 }

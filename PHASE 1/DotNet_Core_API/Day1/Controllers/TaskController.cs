@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Day1.Models;
 using Day1.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Day1.Controllers
 {
     [ApiController]
-    [Route("task")]
+    [Route("tasks")]
     public class TaskController : ControllerBase
     {
         private readonly ITaskService _taskService;
@@ -17,47 +13,110 @@ namespace Day1.Controllers
         {
             _taskService = taskService;
         }
-        [HttpPost("/new")]
-        public TaskModel CreateTask(TaskModel taskModel)
+
+        [HttpPost]
+        public IActionResult AddTask([FromBody] TaskModel taskModel)
         {
-            return _taskService.Create(taskModel);
+            try
+            {
+                var data = _taskService.Add(taskModel);
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("something error");
+            }
         }
 
-        [HttpGet("/get-all")]
-        public List<TaskModel> GetAll()
+        [HttpGet]
+        public IActionResult GetAll()
         {
-            return _taskService.GetAll();
+            try
+            {
+                var data = _taskService.GetAll();
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("something error");
+            }
         }
 
-        [HttpGet("/get-by-id")]
-        public TaskModel? GetById(Guid id)
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
         {
-            return _taskService.GetById(id);
+            try
+            {
+                var data = _taskService.GetById(id);
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("something error");
+            }
         }
 
-        [HttpDelete("/remove")]
-        public TaskModel DeleteById(Guid id)
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(Guid id)
         {
-            return _taskService.DeleteById(id);
+            try
+            {
+                var data = _taskService.DeleteById(id);
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("something error");
+            }
         }
 
-        [HttpPut("/edit-by-id")]
-        public TaskModel? EditByID([FromQuery] Guid id, [FromBody] TaskModel taskModel)
+        [HttpPut("{id}")]
+        public IActionResult EditByID([FromQuery] Guid id, [FromBody] TaskModel taskModel)
         {
-            return _taskService.UpdateById(id, taskModel);
+            try
+            {
+                var data = _taskService.UpdateById(id, taskModel);
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("something error");
+            }
         }
 
-        [HttpPost("/multi-remove")]
-        public TaskModel DeleteByIds([FromBody] List<Guid> guids)
+        [HttpPost("/deletions")]
+        public IActionResult DeleteByIds([FromBody] List<Guid> ids)
         {
-            return _taskService.DeleteByIds(guids);
+            try
+            {
+                var data = _taskService.DeleteByIds(ids);
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("something error");
+            }
         }
 
-        [HttpPost("/multi-add")]
-        public List<TaskModel> AddMulti([FromBody] List<TaskModel> taskModels)
+        [HttpPost("/additions")]
+        public IActionResult AddMulti([FromBody] List<TaskModel> taskModels)
         {
-            return _taskService.AddMulti(taskModels);
-        }
+            try
+            {
+                var data = _taskService.AddMulti(taskModels);
 
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("something error");
+            }
+        }
     }
 }

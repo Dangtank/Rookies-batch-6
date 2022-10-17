@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Day1.Models;
 
 namespace Day1.Services
@@ -62,6 +58,7 @@ namespace Day1.Services
             {
                 var data = new TaskModel
                 {
+                    Id = Guid.NewGuid(),
                     Title = task.Title,
                     IsCompleted = task.IsCompleted
                 };
@@ -73,13 +70,14 @@ namespace Day1.Services
             return newTasks;
         }
 
-        public TaskModel Create(TaskModel taskModel)
+        public TaskModel Add(TaskModel taskModel)
         {
             var newTask = new TaskModel{
                 Id = Guid.NewGuid(),
                 Title = taskModel.Title,
                 IsCompleted = taskModel.IsCompleted
             };
+            
             _tasks.Add(newTask);
 
             return newTask;
@@ -88,6 +86,7 @@ namespace Day1.Services
         public TaskModel DeleteById(Guid id)
         {
             var deleteTask = _tasks.Find(i => i.Id == id);
+
             if (deleteTask != null)
             {
                 _tasks.Remove(deleteTask);
@@ -97,9 +96,11 @@ namespace Day1.Services
             return null;
         }
 
-        public TaskModel DeleteByIds(List<Guid> ids)
+        public bool DeleteByIds(List<Guid> ids)
         {
-            throw new NotImplementedException();
+            _tasks = _tasks.Where(t => ids.Any(i => i != t.Id)).ToList();           
+
+            return true;
         }
 
         public List<TaskModel> GetAll()
@@ -114,7 +115,7 @@ namespace Day1.Services
 
         public TaskModel UpdateById(Guid id, TaskModel taskModel)
         {
-            var taskUpdate = _tasks.Find(i => i.Id == taskModel.Id);
+            var taskUpdate = _tasks.Find(i => i.Id == id);
 
             if (taskUpdate != null)
             {
