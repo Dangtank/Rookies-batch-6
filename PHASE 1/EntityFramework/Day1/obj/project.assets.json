@@ -2030,11 +2030,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\EntityFramework\\Day1\\StudentManagement.csproj",
+      "projectUniqueName": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\EntityFramework\\Day1\\StudentManagement.csproj",
       "projectName": "StudentManagement",
-      "projectPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\EntityFramework\\Day1\\StudentManagement.csproj",
+      "projectPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\EntityFramework\\Day1\\StudentManagement.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\EntityFramework\\Day1\\obj\\",
+      "outputPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\EntityFramework\\Day1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"

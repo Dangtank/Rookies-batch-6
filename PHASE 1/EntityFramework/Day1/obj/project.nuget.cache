@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GHT3Yet64tXmEWc2QUu6CC/CGm3qiy/fw+bye5oX+jR403bzdlBzJkfPB9pDvP8AJ9cZTAt79U3yUuLl+DN+vw==",
+  "dgSpecHash": "MJVVYCFakbqlFPe9aNSkgJewS76WblIxHvGpajJyGt2TBhwgeK3p6tzZwfnxFPLLCJtzIfplN47qi/mIjXD/Uw==",
   "success": true,
-  "projectFilePath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\EntityFramework\\Day1\\StudentManagement.csproj",
+  "projectFilePath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\EntityFramework\\Day1\\StudentManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Legion\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
