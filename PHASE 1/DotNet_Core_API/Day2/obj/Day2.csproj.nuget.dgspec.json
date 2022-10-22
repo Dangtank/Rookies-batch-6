@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj": {}
+    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj": {}
   },
   "projects": {
-    "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj": {
+    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj",
+        "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj",
         "projectName": "Day2",
-        "projectPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj",
+        "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\Day2.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\obj\\",
+        "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\DotNet_Core_API\\Day2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"

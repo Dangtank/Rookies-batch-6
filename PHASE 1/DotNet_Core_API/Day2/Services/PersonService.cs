@@ -142,6 +142,7 @@ namespace Day2.Services
             var name = filterModel.Name;
             var gender = filterModel.Gender;
             var birthPlace = filterModel.BirthPlace;
+            var sortOption = filterModel.Sort;
 
             if (!String.IsNullOrEmpty(name))
             {
@@ -154,16 +155,48 @@ namespace Day2.Services
                 filterPeople = filterPeople.Where(s => s.Gender.Contains(gender)).ToList();
             }
 
-            if (!String.IsNullOrEmpty(gender))
+            if (!String.IsNullOrEmpty(birthPlace))
             {
                 filterPeople = filterPeople.Where(s => s.BirthPlace.Contains(birthPlace)).ToList();
+            }
+        
+            #endregion
+
+            #region Sorting
+
+            switch (sortOption)
+            {
+                case "first_name_desc":
+                    filterPeople = filterPeople.OrderByDescending(s => s.FirstName).ToList();
+                    break;
+                case "last_name_desc":
+                    filterPeople = filterPeople.OrderByDescending(s => s.LastName).ToList();
+                    break;
+                case "last_name":
+                    filterPeople = filterPeople.OrderBy(s => s.LastName).ToList();
+                    break;
+                case "gender":
+                    filterPeople = filterPeople.OrderBy(s => s.Gender).ToList();
+                    break;
+                case "gender_desc":
+                    filterPeople = filterPeople.OrderByDescending(s => s.Gender).ToList();
+                    break;
+                case "birth_place":
+                    filterPeople = filterPeople.OrderBy(s => s.BirthPlace).ToList();
+                    break;
+                case "birth_place_desc":
+                    filterPeople = filterPeople.OrderByDescending(s => s.BirthPlace).ToList();
+                    break;
+                default:
+                    filterPeople = filterPeople.OrderBy(s => s.FirstName).ToList();
+                    break;
             }
 
             #endregion
 
             #region Paging
 
-            filterPeople = FilterHelper.GetPage(filterPeople, filterModel.PageIndex-1, filterModel.PageSize).ToList();
+            filterPeople = FilterHelper.GetPage(filterPeople, filterModel.PageIndex - 1, filterModel.PageSize).ToList();
 
             #endregion
 

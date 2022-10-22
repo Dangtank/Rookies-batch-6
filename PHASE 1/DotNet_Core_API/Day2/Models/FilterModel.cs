@@ -12,5 +12,6 @@ namespace Day2.Models
         public string BirthPlace { get; set; }
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 1;
+        public string Sort {get; set;}
     }
 }
