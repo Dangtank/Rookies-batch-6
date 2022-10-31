@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj": {}
+    "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj": {}
   },
   "projects": {
-    "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj": {
+    "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj",
+        "projectUniqueName": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj",
         "projectName": "Day2",
-        "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj",
+        "projectPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\Day2.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\obj\\",
+        "outputPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Dotnet_Core_MVC\\Day2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -7,7 +7,7 @@ namespace Day2.Repositories;
 
 public class BaseRepository<T> : IBaseRepository<T> where T : class
 {
-    private readonly DbSet<T> _dbSet;
+    protected readonly DbSet<T> _dbSet;
     private readonly ProductStoreContext _context;
 
     public BaseRepository(ProductStoreContext context)

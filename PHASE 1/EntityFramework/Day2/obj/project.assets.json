@@ -2030,19 +2030,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\EntityFramework\\Day2\\Day2.csproj",
+      "projectUniqueName": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\EntityFramework\\Day2\\Day2.csproj",
       "projectName": "Day2",
-      "projectPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\EntityFramework\\Day2\\Day2.csproj",
+      "projectPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\EntityFramework\\Day2\\Day2.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\EntityFramework\\Day2\\obj\\",
+      "outputPath": "d:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\EntityFramework\\Day2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

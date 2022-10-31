@@ -74,7 +74,7 @@ namespace Day2.Services
             using (var transaction = _categogyRepository.DatabaseTransaction())
                 try
                 {
-                    var categories = _categogyRepository.GetAll(p => true);
+                    var categories = _categogyRepository.GetAllCategory();
                     transaction.Commit();
 
                     return categories;
@@ -127,17 +127,19 @@ namespace Day2.Services
                     {
                         category.CategoryId = category.CategoryId;
                         category.CategoryName = updateCategory.CategoryName;
+
+                        _categogyRepository.Update(category);
+                        _categogyRepository.SaveChanges();
+                        transaction.Commit();
+
+                        return new UpdateCategoryResponse
+                        {
+                            CategoryId = category.CategoryId,
+                            CategoryName = category.CategoryName
+                        };
                     }
 
-                    _categogyRepository.Update(category);
-                    _categogyRepository.SaveChanges();
-                    transaction.Commit();
-
-                    return new UpdateCategoryResponse
-                    {
-                        CategoryId = category.CategoryId,
-                        CategoryName = category.CategoryName
-                    };
+                    return null;
                 }
                 catch
                 {

@@ -10,12 +10,10 @@ namespace Day3.Controllers
 {
     public class RookiesController : Controller
     {
-        private readonly ILogger<RookiesController> _logger;
         private readonly IPersonService _personService;
 
-        public RookiesController(ILogger<RookiesController> logger, IPersonService personService)
+        public RookiesController(IPersonService personService)
         {
-            _logger = logger;
             _personService = personService;
         }
         public IActionResult Index()
@@ -34,23 +32,29 @@ namespace Day3.Controllers
         [HttpPost]
         public IActionResult Create(PersonModelCreate personModelCreate)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var person = new PersonModel
+                if (ModelState.IsValid)
                 {
-                    FirstName = personModelCreate.FirstName,
-                    LastName = personModelCreate.LastName,
-                    Gender = personModelCreate.Gender,
-                    DateOfBirth = personModelCreate.DateOfBirth,
-                    BirthPlace = personModelCreate.BirthPlace,
-                    PhoneNumber = personModelCreate.PhoneNumber,
-                    IsGraduated = false
-                };
-                _personService.Create(person);
-
-                return RedirectToAction("Index");
+                    var person = new PersonModel
+                    {
+                        FirstName = personModelCreate.FirstName,
+                        LastName = personModelCreate.LastName,
+                        Gender = personModelCreate.Gender,
+                        DateOfBirth = personModelCreate.DateOfBirth,
+                        BirthPlace = personModelCreate.BirthPlace,
+                        PhoneNumber = personModelCreate.PhoneNumber,
+                        IsGraduated = false
+                    };
+                    _personService.Create(person);
+                    return RedirectToAction("Index");
+                }
             }
-            return View(personModelCreate);
+            catch (Exception ex)
+            {
+                return BadRequest(personModelCreate);
+            }
+            return View();
         }
 
         [HttpGet]
@@ -69,7 +73,7 @@ namespace Day3.Controllers
                     BirthPlace = person.BirthPlace,
                     PhoneNumber = person.PhoneNumber,
                 };
-                ViewData["Index"] = index;
+                // ViewData["Index"] = index;
 
                 return View(personUpdate);
             }
