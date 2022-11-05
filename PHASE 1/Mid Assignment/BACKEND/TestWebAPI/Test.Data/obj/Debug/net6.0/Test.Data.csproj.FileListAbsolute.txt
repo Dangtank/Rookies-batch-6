@@ -30,3 +30,20 @@ D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid\TestWebAPI\Test.Data\obj\Debug\net6.0\T
 D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid\TestWebAPI\Test.Data\obj\Debug\net6.0\ref\Test.Data.dll
 D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid\TestWebAPI\Test.Data\bin\Debug\net6.0\Test.Data.runtimeconfig.json
 D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.genruntimeconfig.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\bin\Debug\net6.0\Test.Data.deps.json
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\bin\Debug\net6.0\Test.Data.runtimeconfig.json
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\bin\Debug\net6.0\Test.Data.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\bin\Debug\net6.0\Test.Data.pdb
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\bin\Debug\net6.0\Common.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\bin\Debug\net6.0\Common.pdb
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.csproj.AssemblyReference.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.AssemblyInfoInputs.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.AssemblyInfo.cs
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.csproj.CoreCompileInputs.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.csproj.CopyComplete
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\refint\Test.Data.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.pdb
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\Test.Data.genruntimeconfig.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\TestWebAPI\Test.Data\obj\Debug\net6.0\ref\Test.Data.dll

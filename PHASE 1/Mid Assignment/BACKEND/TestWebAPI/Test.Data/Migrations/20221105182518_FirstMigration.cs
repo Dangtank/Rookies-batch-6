@@ -54,6 +54,19 @@ namespace Test.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Book",
+                columns: table => new
+                {
+                    BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BookName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Book", x => x.BookId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "BookBorrowingRequest",
                 columns: table => new
                 {
@@ -74,7 +87,7 @@ namespace Test.Data.Migrations
                 columns: table => new
                 {
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -205,27 +218,57 @@ namespace Test.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Book",
+                name: "BookBorrowingRequestDetail",
                 columns: table => new
                 {
-                    BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BookingDate = table.Column<DateTime>(type: "datetime", maxLength: 50, nullable: false),
                     ReturnDate = table.Column<DateTime>(type: "datetime", maxLength: 50, nullable: false),
                     RequestId = table.Column<Guid>(type: "uniqueidentifier", maxLength: 50, nullable: false),
-                    BookName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    BookForeignKey = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Book", x => x.BookId);
+                    table.PrimaryKey("PK_BookBorrowingRequestDetail", x => x.DetailId);
                     table.ForeignKey(
-                        name: "FK_Book_BookBorrowingRequest_RequestId",
+                        name: "FK_BookBorrowingRequestDetail_Book_BookForeignKey",
+                        column: x => x.BookForeignKey,
+                        principalTable: "Book",
+                        principalColumn: "BookId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookBorrowingRequestDetail_BookBorrowingRequest_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "BookBorrowingRequest",
+                        principalColumn: "RequestId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CategoryBook",
+                columns: table => new
+                {
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryBook", x => new { x.BookId, x.CategoryId, x.RequestId });
+                    table.ForeignKey(
+                        name: "FK_CategoryBook_Book_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Book",
+                        principalColumn: "BookId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CategoryBook_BookBorrowingRequest_RequestId",
                         column: x => x.RequestId,
                         principalTable: "BookBorrowingRequest",
                         principalColumn: "RequestId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Book_Category_CategoryId",
+                        name: "FK_CategoryBook_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
                         principalColumn: "CategoryId",
@@ -272,13 +315,24 @@ namespace Test.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_CategoryId",
-                table: "Book",
+                name: "IX_BookBorrowingRequestDetail_BookForeignKey",
+                table: "BookBorrowingRequestDetail",
+                column: "BookForeignKey",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookBorrowingRequestDetail_RequestId",
+                table: "BookBorrowingRequestDetail",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CategoryBook_CategoryId",
+                table: "CategoryBook",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_RequestId",
-                table: "Book",
+                name: "IX_CategoryBook_RequestId",
+                table: "CategoryBook",
                 column: "RequestId");
         }
 
@@ -300,7 +354,10 @@ namespace Test.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Book");
+                name: "BookBorrowingRequestDetail");
+
+            migrationBuilder.DropTable(
+                name: "CategoryBook");
 
             migrationBuilder.DropTable(
                 name: "People");
@@ -310,6 +367,9 @@ namespace Test.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Book");
 
             migrationBuilder.DropTable(
                 name: "BookBorrowingRequest");

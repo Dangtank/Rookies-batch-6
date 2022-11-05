@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid\\TestWebAPI\\Common\\Common.csproj",
+      "projectUniqueName": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\TestWebAPI\\Common\\Common.csproj",
       "projectName": "Common",
-      "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid\\TestWebAPI\\Common\\Common.csproj",
+      "projectPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\TestWebAPI\\Common\\Common.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid\\TestWebAPI\\Common\\obj\\",
+      "outputPath": "d:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\TestWebAPI\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",

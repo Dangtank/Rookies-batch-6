@@ -11,6 +11,6 @@ namespace Test.Data.Entities
         public Guid CategoryId { get; set; }
         public string? CategoryName { get; set; }
 
-        public virtual ICollection<Book> Books { get; set; } 
+        public virtual ICollection<CategoryBook> CategoryBooks { get; set; } 
     }
 }

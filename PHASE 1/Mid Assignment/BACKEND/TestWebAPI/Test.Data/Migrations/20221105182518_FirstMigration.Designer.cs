@@ -12,7 +12,7 @@ using Test.Data;
 namespace Test.Data.Migrations
 {
     [DbContext(typeof(TestContext))]
-    [Migration("20221105112542_FirstMigration")]
+    [Migration("20221105182518_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -242,6 +242,7 @@ namespace Test.Data.Migrations
             modelBuilder.Entity("Test.Data.Entities.Book", b =>
                 {
                     b.Property<Guid>("BookId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("BookId");
 
@@ -256,8 +257,6 @@ namespace Test.Data.Migrations
                         .HasColumnName("CategoryId");
 
                     b.HasKey("BookId");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Book", (string)null);
                 });
@@ -303,10 +302,13 @@ namespace Test.Data.Migrations
 
             modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequestDetail", b =>
                 {
-                    b.Property<Guid>("BookId")
+                    b.Property<Guid>("DetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("BookId");
+                        .HasColumnName("DetailId");
+
+                    b.Property<Guid>("BookForeignKey")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BookingDate")
                         .HasMaxLength(50)
@@ -323,11 +325,14 @@ namespace Test.Data.Migrations
                         .HasColumnType("datetime")
                         .HasColumnName("ReturnDate");
 
-                    b.HasKey("BookId");
+                    b.HasKey("DetailId");
+
+                    b.HasIndex("BookForeignKey")
+                        .IsUnique();
 
                     b.HasIndex("RequestId");
 
-                    b.ToTable("Book", (string)null);
+                    b.ToTable("BookBorrowingRequestDetail", (string)null);
                 });
 
             modelBuilder.Entity("Test.Data.Entities.Category", b =>
@@ -338,7 +343,6 @@ namespace Test.Data.Migrations
                         .HasColumnName("CategoryId");
 
                     b.Property<string>("CategoryName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("CategoryName");
@@ -346,6 +350,26 @@ namespace Test.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category", (string)null);
+                });
+
+            modelBuilder.Entity("Test.Data.Entities.CategoryBook", b =>
+                {
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("BookId", "CategoryId", "RequestId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("RequestId");
+
+                    b.ToTable("CategoryBook", (string)null);
                 });
 
             modelBuilder.Entity("Test.Data.Entities.Person", b =>
@@ -429,50 +453,70 @@ namespace Test.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Test.Data.Entities.Book", b =>
-                {
-                    b.HasOne("Test.Data.Entities.BookBorrowingRequestDetail", "BookeBorrowingRequestDetail")
-                        .WithOne("Book")
-                        .HasForeignKey("Test.Data.Entities.Book", "BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Test.Data.Entities.Category", "Category")
-                        .WithMany("Books")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookeBorrowingRequestDetail");
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequestDetail", b =>
                 {
+                    b.HasOne("Test.Data.Entities.Book", "Book")
+                        .WithOne("BookBorrowingRequestDetail")
+                        .HasForeignKey("Test.Data.Entities.BookBorrowingRequestDetail", "BookForeignKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Test.Data.Entities.BookBorrowingRequest", "BookeBorrowingRequest")
                         .WithMany("BookBorrowingRequestDetails")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Book");
+
                     b.Navigation("BookeBorrowingRequest");
+                });
+
+            modelBuilder.Entity("Test.Data.Entities.CategoryBook", b =>
+                {
+                    b.HasOne("Test.Data.Entities.Book", "Book")
+                        .WithMany("CategoryBooks")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Test.Data.Entities.Category", "Category")
+                        .WithMany("CategoryBooks")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Test.Data.Entities.BookBorrowingRequest", "BookBorrowingRequest")
+                        .WithMany("CategoryBooks")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("BookBorrowingRequest");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Test.Data.Entities.Book", b =>
+                {
+                    b.Navigation("BookBorrowingRequestDetail")
+                        .IsRequired();
+
+                    b.Navigation("CategoryBooks");
                 });
 
             modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequest", b =>
                 {
                     b.Navigation("BookBorrowingRequestDetails");
-                });
 
-            modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequestDetail", b =>
-                {
-                    b.Navigation("Book")
-                        .IsRequired();
+                    b.Navigation("CategoryBooks");
                 });
 
             modelBuilder.Entity("Test.Data.Entities.Category", b =>
                 {
-                    b.Navigation("Books");
+                    b.Navigation("CategoryBooks");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Test.Data;
 using Test.Data.Auth;
 using TestWebAPI.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ builder.Services.AddDbContext<TestContext>(opt =>
 {
     opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddControllers().AddJsonOptions(o =>
+        o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve
+    );
 
 builder.Services.AddTransient<ITestService, TestService>();
 

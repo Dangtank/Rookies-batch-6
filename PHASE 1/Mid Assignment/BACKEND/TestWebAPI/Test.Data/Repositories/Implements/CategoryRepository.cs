@@ -10,7 +10,7 @@ namespace Test.Data.Repositories.Implements
 
         public IEnumerable<Category> GetAllCategory()
         {
-            return _dbSet.Include(c => c.Books);
+            return _dbSet.Include(c => c.CategoryBooks);
         }
     }
 }

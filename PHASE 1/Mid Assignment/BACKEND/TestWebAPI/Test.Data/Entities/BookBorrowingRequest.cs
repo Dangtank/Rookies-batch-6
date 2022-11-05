@@ -12,5 +12,9 @@ namespace Test.Data.Entities
         public string ApprovedBy { get; set; }
 
         public virtual ICollection<BookBorrowingRequestDetail> BookBorrowingRequestDetails { get; set; }
+        public virtual ICollection<CategoryBook> CategoryBooks { get; set; } = null!;
+
+        // public virtual ICollection<BookAndBookRequest> BookAndBookRequests { get; set; }
+
     }
 }
