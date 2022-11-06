@@ -111,14 +111,16 @@ namespace TestWebAPI.Services.Implements
                     if (book != null)
                     {
                         transaction.Commit();
+
+                        return new OneBookResponse
+                        {
+                            BookId = book.BookId,
+                            BookName = book.BookName,
+                            CategoryId = book.CategoryId
+                        };
                     }
 
-                    return new OneBookResponse
-                    {
-                        BookId = book.BookId,
-                        BookName = book.BookName,
-                        CategoryId = book.CategoryId
-                    };
+                    return null;
 
                 }
                 catch
@@ -136,7 +138,7 @@ namespace TestWebAPI.Services.Implements
                 try
                 {
                     var book = _bookRepository.GetOne(i => i.BookId == updateBookRequest.BookId);
-                    
+
                     if (book != null)
                     {
                         book.CategoryId = updateBookRequest.CategoryId;
@@ -145,14 +147,16 @@ namespace TestWebAPI.Services.Implements
                         _bookRepository.Update(book);
                         _bookRepository.SaveChanges();
                         transaction.Commit();
+
+                        return new UpdateBookResponse
+                        {
+                            BookId = book.BookId,
+                            BookName = book.BookName,
+                            CategoryId = book.CategoryId
+                        };
                     }
 
-                    return new UpdateBookResponse
-                    {
-                        BookId = book.BookId,
-                        BookName = book.BookName,
-                        CategoryId = book.CategoryId
-                    };
+                    return null;
                 }
                 catch
                 {

@@ -1,10 +1,22 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Test.Data.Auth;
 using Test.Data.Entities;
 
 namespace Test.Data
 {
+    public class TestContextFactory : IDesignTimeDbContextFactory<TestContext>
+    {
+        public TestContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TestContext>();
+            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=LibraryDb;Integrated Security=True");
+
+            return new TestContext(optionsBuilder.Options);
+        }
+    }
+
     public class TestContext : IdentityDbContext<ApplicationUser>
     {
         public TestContext(DbContextOptions<TestContext> options) : base(options)
@@ -20,7 +32,7 @@ namespace Test.Data
 
             modelBuilder.Entity<CategoryBook>()
                         .ToTable("CategoryBook")
-                        .HasKey(t => new { t.BookId, t.CategoryId, t.RequestId});
+                        .HasKey(t => new { t.BookId, t.CategoryId, t.RequestId });
 
             modelBuilder.Entity<CategoryBook>()
                         .HasOne(c => c.Category)
@@ -31,9 +43,9 @@ namespace Test.Data
                         .HasOne(c => c.Book)
                         .WithMany(b => b.CategoryBooks)
                         .HasForeignKey(cb => cb.BookId);
-            
+
             modelBuilder.Entity<CategoryBook>()
-                        .HasOne(c => c.BookBorrowingRequest)
+                        .HasOne(c => c.BookRequest)
                         .WithMany(b => b.CategoryBooks)
                         .HasForeignKey(cb => cb.RequestId);
 
@@ -66,9 +78,9 @@ namespace Test.Data
                                        .HasKey(book => book.BookId);// Khoa chinh
 
             modelBuilder.Entity<Book>()
-                            .HasOne(b => b.BookBorrowingRequestDetail)
+                            .HasOne(b => b.BookRequestDetail)
                             .WithOne(b => b.Book)
-                            .HasForeignKey<BookBorrowingRequestDetail>(b => b.BookForeignKey);
+                            .HasForeignKey<BookRequestDetail>(b => b.BookForeignKey);
 
             modelBuilder.Entity<Book>()
                             .Property(book => book.BookId)
@@ -90,43 +102,43 @@ namespace Test.Data
 
             #endregion
 
-            #region BookBorrowingRequest
+            #region BookRequest
 
-            modelBuilder.Entity<BookBorrowingRequest>()
-                                        .ToTable("BookBorrowingRequest")//ten bang trong sql
+            modelBuilder.Entity<BookRequest>()
+                                        .ToTable("BookRequest")//ten bang trong sql
                                         .HasKey(b => b.RequestId);//khoa chinh
 
-            modelBuilder.Entity<BookBorrowingRequest>()
+            modelBuilder.Entity<BookRequest>()
                             .Property(b => b.RequestId)
                             .HasColumnName("RequestId")
                             .HasColumnType("uniqueidentifier")
                             .IsRequired();
 
-            modelBuilder.Entity<BookBorrowingRequest>()
+            modelBuilder.Entity<BookRequest>()
                             .Property(b => b.RequestedBy)
                             .HasColumnName("RequestedBy")
                             .HasColumnType("nvarchar")
                             .HasMaxLength(50);
 
-            modelBuilder.Entity<BookBorrowingRequest>()
+            modelBuilder.Entity<BookRequest>()
                             .Property(b => b.RequestedDate)
                             .HasColumnName("RequestedDate")
                             .HasColumnType("datetime")
                             .HasMaxLength(50);
 
-            modelBuilder.Entity<BookBorrowingRequest>()
+            modelBuilder.Entity<BookRequest>()
                             .Property(b => b.RequestStatus)
                             .HasColumnName("RequestStatus")
                             .HasColumnType("int")
                             .HasMaxLength(50);
 
-            modelBuilder.Entity<BookBorrowingRequest>()
+            modelBuilder.Entity<BookRequest>()
                             .Property(b => b.RejectedBy)
                             .HasColumnName("RejectedBy")
                             .HasColumnType("nvarchar")
                             .HasMaxLength(50);
 
-            modelBuilder.Entity<BookBorrowingRequest>()
+            modelBuilder.Entity<BookRequest>()
                             .Property(b => b.ApprovedBy)
                             .HasColumnName("ApprovedBy")
                             .HasColumnType("nvarchar")
@@ -134,25 +146,31 @@ namespace Test.Data
 
             #endregion
 
-            #region BookeBorrowingRequestDetail
+            #region BookeRequestDetail
 
-            modelBuilder.Entity<BookBorrowingRequestDetail>()
-                                       .ToTable("BookBorrowingRequestDetail")
+            modelBuilder.Entity<BookRequestDetail>()
+                                       .ToTable("BookRequestDetail")
                                        .HasKey(book => book.DetailId);// Khoa chinh
 
-            modelBuilder.Entity<BookBorrowingRequestDetail>()
-                            .HasOne<BookBorrowingRequest>(s => s.BookeBorrowingRequest)//trong detail lay request 
-                            .WithMany(g => g.BookBorrowingRequestDetails)//1 request nay ket noi nhieu detail
-                            .HasForeignKey(s => s.RequestId);
+            modelBuilder.Entity<BookRequestDetail>()
+                            .HasOne<BookRequest>(s => s.BookRequest)//trong detail lay request 
+                            .WithMany(g => g.BookRequestDetails)//1 request nay ket noi nhieu detail
+                            .HasForeignKey(s => s.RequestForeignKey);
 
             // modelBuilder.Entity<BookBorrowingRequestDetail>()
             //                 .HasOne(s => s.Book)//trong detail lay book 
             //                 .WithOne(g => g.BookBorrowingRequestDetail)//1 book nay ket noi mot detail
             //                 .HasForeignKey<Book>(s => s.);
 
-            modelBuilder.Entity<BookBorrowingRequestDetail>()
+            modelBuilder.Entity<BookRequestDetail>()
                            .Property(book => book.DetailId)
                            .HasColumnName("DetailId")
+                           .HasColumnType("uniqueidentifier")
+                           .IsRequired();
+
+            modelBuilder.Entity<BookRequestDetail>()
+                           .Property(book => book.BookForeignKey)
+                           .HasColumnName("BookForeignKey")
                            .HasColumnType("uniqueidentifier")
                            .IsRequired();
 
@@ -162,21 +180,21 @@ namespace Test.Data
             //                .HasColumnType("uniqueidentifier")
             //                .IsRequired();
 
-            modelBuilder.Entity<BookBorrowingRequestDetail>()
+            modelBuilder.Entity<BookRequestDetail>()
                             .Property(b => b.BookingDate)
                             .HasColumnName("BookingDate")
-                            .HasColumnType("datetime")
+                            .HasColumnType("nvarchar")
                             .HasMaxLength(50);
 
-            modelBuilder.Entity<BookBorrowingRequestDetail>()
+            modelBuilder.Entity<BookRequestDetail>()
                             .Property(b => b.ReturnDate)
                             .HasColumnName("ReturnDate")
-                            .HasColumnType("datetime")
+                            .HasColumnType("nvarchar")
                             .HasMaxLength(50);
 
-            modelBuilder.Entity<BookBorrowingRequestDetail>()
-                            .Property(b => b.RequestId)
-                            .HasColumnName("RequestId")
+            modelBuilder.Entity<BookRequestDetail>()
+                            .Property(b => b.RequestForeignKey)
+                            .HasColumnName("RequestForeignKey")
                             .HasColumnType("uniqueidentifier")
                             .HasMaxLength(50)
                             .IsRequired();
@@ -187,9 +205,9 @@ namespace Test.Data
 
         public DbSet<Category>? Categories { get; set; }
         public DbSet<Book>? Books { get; set; }
-        public DbSet<BookBorrowingRequest> BookBorrowingRequests { get; set; }
-        public DbSet<BookBorrowingRequestDetail> BookeBorrowingRequestDetails { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<BookRequest> BookRequests { get; set; }
+        public DbSet<BookRequestDetail> BookRequestDetails { get; set; }
         public DbSet<CategoryBook> CategoryBooks { get; set; }
     }
 }

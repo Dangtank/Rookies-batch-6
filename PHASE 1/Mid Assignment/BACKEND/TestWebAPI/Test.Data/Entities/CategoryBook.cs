@@ -14,6 +14,6 @@ namespace Test.Data.Entities
         public Book Book { get; set; }
 
         public Guid RequestId { get; set; }
-        public BookBorrowingRequest BookBorrowingRequest { get; set; }
+        public BookRequest BookRequest { get; set; }
     }
 }

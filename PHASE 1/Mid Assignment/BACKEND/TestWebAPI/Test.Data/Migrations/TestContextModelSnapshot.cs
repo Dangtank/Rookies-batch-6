@@ -259,7 +259,7 @@ namespace Test.Data.Migrations
                     b.ToTable("Book", (string)null);
                 });
 
-            modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequest", b =>
+            modelBuilder.Entity("Test.Data.Entities.BookRequest", b =>
                 {
                     b.Property<Guid>("RequestId")
                         .ValueGeneratedOnAdd()
@@ -267,38 +267,37 @@ namespace Test.Data.Migrations
                         .HasColumnName("RequestId");
 
                     b.Property<string>("ApprovedBy")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("ApprovedBy");
 
                     b.Property<string>("RejectedBy")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("RejectedBy");
 
-                    b.Property<int?>("RequestStatus")
+                    b.Property<int>("RequestStatus")
                         .HasMaxLength(50)
                         .HasColumnType("int")
                         .HasColumnName("RequestStatus");
 
                     b.Property<string>("RequestedBy")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("RequestedBy");
 
-                    b.Property<DateTime?>("RequestedDate")
+                    b.Property<DateTime>("RequestedDate")
                         .HasMaxLength(50)
                         .HasColumnType("datetime")
                         .HasColumnName("RequestedDate");
 
                     b.HasKey("RequestId");
 
-                    b.ToTable("BookBorrowingRequest", (string)null);
+                    b.ToTable("BookRequest", (string)null);
                 });
 
-            modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequestDetail", b =>
+            modelBuilder.Entity("Test.Data.Entities.BookRequestDetail", b =>
                 {
                     b.Property<Guid>("DetailId")
                         .ValueGeneratedOnAdd()
@@ -306,21 +305,22 @@ namespace Test.Data.Migrations
                         .HasColumnName("DetailId");
 
                     b.Property<Guid>("BookForeignKey")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("BookForeignKey");
 
-                    b.Property<DateTime>("BookingDate")
+                    b.Property<string>("BookingDate")
                         .HasMaxLength(50)
-                        .HasColumnType("datetime")
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("BookingDate");
 
-                    b.Property<Guid>("RequestId")
+                    b.Property<Guid>("RequestForeignKey")
                         .HasMaxLength(50)
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("RequestId");
+                        .HasColumnName("RequestForeignKey");
 
-                    b.Property<DateTime>("ReturnDate")
+                    b.Property<string>("ReturnDate")
                         .HasMaxLength(50)
-                        .HasColumnType("datetime")
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("ReturnDate");
 
                     b.HasKey("DetailId");
@@ -328,9 +328,9 @@ namespace Test.Data.Migrations
                     b.HasIndex("BookForeignKey")
                         .IsUnique();
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("RequestForeignKey");
 
-                    b.ToTable("BookBorrowingRequestDetail", (string)null);
+                    b.ToTable("BookRequestDetail", (string)null);
                 });
 
             modelBuilder.Entity("Test.Data.Entities.Category", b =>
@@ -451,23 +451,23 @@ namespace Test.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequestDetail", b =>
+            modelBuilder.Entity("Test.Data.Entities.BookRequestDetail", b =>
                 {
                     b.HasOne("Test.Data.Entities.Book", "Book")
-                        .WithOne("BookBorrowingRequestDetail")
-                        .HasForeignKey("Test.Data.Entities.BookBorrowingRequestDetail", "BookForeignKey")
+                        .WithOne("BookRequestDetail")
+                        .HasForeignKey("Test.Data.Entities.BookRequestDetail", "BookForeignKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Test.Data.Entities.BookBorrowingRequest", "BookeBorrowingRequest")
-                        .WithMany("BookBorrowingRequestDetails")
-                        .HasForeignKey("RequestId")
+                    b.HasOne("Test.Data.Entities.BookRequest", "BookRequest")
+                        .WithMany("BookRequestDetails")
+                        .HasForeignKey("RequestForeignKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Book");
 
-                    b.Navigation("BookeBorrowingRequest");
+                    b.Navigation("BookRequest");
                 });
 
             modelBuilder.Entity("Test.Data.Entities.CategoryBook", b =>
@@ -484,7 +484,7 @@ namespace Test.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Test.Data.Entities.BookBorrowingRequest", "BookBorrowingRequest")
+                    b.HasOne("Test.Data.Entities.BookRequest", "BookRequest")
                         .WithMany("CategoryBooks")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -492,22 +492,22 @@ namespace Test.Data.Migrations
 
                     b.Navigation("Book");
 
-                    b.Navigation("BookBorrowingRequest");
+                    b.Navigation("BookRequest");
 
                     b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Test.Data.Entities.Book", b =>
                 {
-                    b.Navigation("BookBorrowingRequestDetail")
+                    b.Navigation("BookRequestDetail")
                         .IsRequired();
 
                     b.Navigation("CategoryBooks");
                 });
 
-            modelBuilder.Entity("Test.Data.Entities.BookBorrowingRequest", b =>
+            modelBuilder.Entity("Test.Data.Entities.BookRequest", b =>
                 {
-                    b.Navigation("BookBorrowingRequestDetails");
+                    b.Navigation("BookRequestDetails");
 
                     b.Navigation("CategoryBooks");
                 });

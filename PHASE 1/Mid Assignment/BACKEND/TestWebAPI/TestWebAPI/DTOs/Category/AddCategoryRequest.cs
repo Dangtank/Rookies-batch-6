@@ -7,6 +7,7 @@ namespace TestWebAPI.DTOs.Category
 {
     public class AddCategoryRequest
     {
+        public Guid CategoryId { get; set; }
         public string? CategoryName { get; set; }
     }
 }

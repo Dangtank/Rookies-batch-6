@@ -7,6 +7,6 @@
         public Guid CategoryId {get; set;}
 
         public virtual ICollection<CategoryBook> CategoryBooks { get; set; } = null!;
-        public virtual BookBorrowingRequestDetail BookBorrowingRequestDetail { get; set; } = null!;
+        public virtual BookRequestDetail BookRequestDetail { get; set; } = null!;
     }
 }

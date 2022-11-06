@@ -67,19 +67,19 @@ namespace Test.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookBorrowingRequest",
+                name: "BookRequest",
                 columns: table => new
                 {
                     RequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RequestedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    RequestedDate = table.Column<DateTime>(type: "datetime", maxLength: 50, nullable: true),
-                    RequestStatus = table.Column<int>(type: "int", maxLength: 50, nullable: true),
-                    RejectedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ApprovedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    RequestedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    RequestedDate = table.Column<DateTime>(type: "datetime", maxLength: 50, nullable: false),
+                    RequestStatus = table.Column<int>(type: "int", maxLength: 50, nullable: false),
+                    RejectedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ApprovedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookBorrowingRequest", x => x.RequestId);
+                    table.PrimaryKey("PK_BookRequest", x => x.RequestId);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,28 +218,28 @@ namespace Test.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookBorrowingRequestDetail",
+                name: "BookRequestDetail",
                 columns: table => new
                 {
                     DetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    BookingDate = table.Column<DateTime>(type: "datetime", maxLength: 50, nullable: false),
-                    ReturnDate = table.Column<DateTime>(type: "datetime", maxLength: 50, nullable: false),
-                    RequestId = table.Column<Guid>(type: "uniqueidentifier", maxLength: 50, nullable: false),
+                    BookingDate = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ReturnDate = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    RequestForeignKey = table.Column<Guid>(type: "uniqueidentifier", maxLength: 50, nullable: false),
                     BookForeignKey = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookBorrowingRequestDetail", x => x.DetailId);
+                    table.PrimaryKey("PK_BookRequestDetail", x => x.DetailId);
                     table.ForeignKey(
-                        name: "FK_BookBorrowingRequestDetail_Book_BookForeignKey",
+                        name: "FK_BookRequestDetail_Book_BookForeignKey",
                         column: x => x.BookForeignKey,
                         principalTable: "Book",
                         principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookBorrowingRequestDetail_BookBorrowingRequest_RequestId",
-                        column: x => x.RequestId,
-                        principalTable: "BookBorrowingRequest",
+                        name: "FK_BookRequestDetail_BookRequest_RequestForeignKey",
+                        column: x => x.RequestForeignKey,
+                        principalTable: "BookRequest",
                         principalColumn: "RequestId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -262,9 +262,9 @@ namespace Test.Data.Migrations
                         principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryBook_BookBorrowingRequest_RequestId",
+                        name: "FK_CategoryBook_BookRequest_RequestId",
                         column: x => x.RequestId,
-                        principalTable: "BookBorrowingRequest",
+                        principalTable: "BookRequest",
                         principalColumn: "RequestId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -315,15 +315,15 @@ namespace Test.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookBorrowingRequestDetail_BookForeignKey",
-                table: "BookBorrowingRequestDetail",
+                name: "IX_BookRequestDetail_BookForeignKey",
+                table: "BookRequestDetail",
                 column: "BookForeignKey",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookBorrowingRequestDetail_RequestId",
-                table: "BookBorrowingRequestDetail",
-                column: "RequestId");
+                name: "IX_BookRequestDetail_RequestForeignKey",
+                table: "BookRequestDetail",
+                column: "RequestForeignKey");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoryBook_CategoryId",
@@ -354,7 +354,7 @@ namespace Test.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BookBorrowingRequestDetail");
+                name: "BookRequestDetail");
 
             migrationBuilder.DropTable(
                 name: "CategoryBook");
@@ -372,7 +372,7 @@ namespace Test.Data.Migrations
                 name: "Book");
 
             migrationBuilder.DropTable(
-                name: "BookBorrowingRequest");
+                name: "BookRequest");
 
             migrationBuilder.DropTable(
                 name: "Category");

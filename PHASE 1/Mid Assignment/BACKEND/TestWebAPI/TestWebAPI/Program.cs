@@ -5,8 +5,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Test.Data;
 using Test.Data.Auth;
-using TestWebAPI.Services;
 using System.Text.Json.Serialization;
+using TestWebAPI.Services.Interfaces;
+using TestWebAPI.Services.Implements;
+using Test.Data.Repositories.Interfaces;
+using Test.Data.Repositories.Implements;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +25,18 @@ builder.Services.AddDbContext<TestContext>(opt =>
 builder.Services.AddControllers().AddJsonOptions(o =>
         o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve
     );
+    
+builder.Services.AddTransient<IBookService, BookService>();
+builder.Services.AddTransient<IBookRepository, BookRepository>();
 
-builder.Services.AddTransient<ITestService, TestService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+builder.Services.AddTransient<IBookRequestService, BookRequestService>();
+builder.Services.AddTransient<IBookRequestRepository, BookRequestRepository>();
+
+builder.Services.AddTransient<IBookRequestDetailRepository, BookRequestDetailRepository>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

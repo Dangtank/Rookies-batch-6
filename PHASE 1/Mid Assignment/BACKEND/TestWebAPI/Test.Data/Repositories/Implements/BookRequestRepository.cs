@@ -7,9 +7,9 @@ using Test.Data.Repositories.Interfaces;
 
 namespace Test.Data.Repositories.Implements
 {
-    public class BookBorrowingRequestRepository : BaseRepository<BookBorrowingRequest>, IBookBorrowingRequestRepository
+    public class BookRequestRepository : BaseRepository<BookRequest>, IBookRequestRepository
     {
-        public BookBorrowingRequestRepository(TestContext context) : base (context)
+        public BookRequestRepository(TestContext context) : base (context)
         {}
     }
 }

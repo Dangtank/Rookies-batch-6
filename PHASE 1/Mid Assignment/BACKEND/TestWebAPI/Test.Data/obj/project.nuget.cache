@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+vtNs9gJlXwa4OULBqz6zdQzCPTHUNX28DgwF5XeodPSWpbH3DrX8D7TVOaDKYEXC6IBUjIx1i6y3marCDGvoA==",
+  "dgSpecHash": "UXIIVIgqRahjpzENSCbpZqVSZSoH+L51zTAyWzXgKawdJ5vA9d90k0qlM2yCRA69W+x6R07Iu4M5UEhhJNGoNA==",
   "success": true,
   "projectFilePath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\TestWebAPI\\Test.Data\\Test.Data.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.10\\microsoft.entityframeworkcore.design.6.0.10.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.10\\microsoft.entityframeworkcore.relational.6.0.10.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.10\\microsoft.entityframeworkcore.sqlserver.6.0.10.nupkg.sha512",
+    "C:\\Users\\Legion\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.10\\microsoft.entityframeworkcore.tools.6.0.10.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
