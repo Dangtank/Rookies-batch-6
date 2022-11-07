@@ -1,0 +1,17 @@
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\bin\Debug\net6.0\Library.Data.deps.json
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\bin\Debug\net6.0\Library.Data.runtimeconfig.json
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\bin\Debug\net6.0\Library.Data.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\bin\Debug\net6.0\Library.Data.pdb
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\bin\Debug\net6.0\Common.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\bin\Debug\net6.0\Common.pdb
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.csproj.AssemblyReference.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.AssemblyInfoInputs.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.AssemblyInfo.cs
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.csproj.CoreCompileInputs.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.csproj.CopyComplete
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\refint\Library.Data.dll
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.pdb
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\Library.Data.genruntimeconfig.cache
+D:\ROOKIES-6\Rookies batch 6\PHASE 1\Mid Assignment\BACKEND\LibraryWebAPI\Library.Data\obj\Debug\net6.0\ref\Library.Data.dll

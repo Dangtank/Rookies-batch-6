@@ -1,0 +1,16 @@
+﻿To run migration to your database:
+
+1. Change connection string in appsettings.json 
+
+2. Open Package Manager Console
+
+3. Run migration:
+add-migration FirstMigration -context LibraryContext -o Migrations
+
+4. Update migration:
+update-database
+
+
+To LibraryAPI:
+Get: https://localhost:7233/api/Library/get
+Post: https://localhost:7233/api/Library/post
