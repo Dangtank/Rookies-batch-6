@@ -50,6 +50,7 @@ namespace LibraryWebAPI.Services.Implements
                             BookName = newBook.BookName,
                             CategoryId = newBook.CategoryId,
                             CategoryName = category.CategoryName,
+                            Borrowed = false
                         };
                     }
 
@@ -127,7 +128,8 @@ namespace LibraryWebAPI.Services.Implements
                         {
                             BookId = book.BookId,
                             BookName = book.BookName,
-                            CategoryId = book.CategoryId
+                            CategoryId = book.CategoryId,
+                            Borrowed = book.Borrowed
                         };
                     }
 

@@ -38,7 +38,7 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    
+
                     var detailRequests = _requestDetailRepository.GetAllWithPredicate(i => i.RequestForeignKey == changeStateRequest.RequestId);
                     var requests = _bookRequestRepository.GetOne(i => i.RequestId == changeStateRequest.RequestId);
                     var books = _requestDetailRepository.GetAllWithPredicate(
@@ -55,18 +55,13 @@ namespace LibraryWebAPI.Services.Implements
 
                         foreach (var detail in detailRequests)
                         {
-                            var book = _bookRepository.GetOne(i => i.BookId == detail.BookForeignKey);
-                            book.Borrowed = true;
-
                             detail.BookingDate = DateTime.Now.ToString();
-                            _bookRepository.Update(book);
                             _requestDetailRepository.Update(detail);
                         }
 
                         _bookRequestRepository.Update(requests);
                         _requestDetailRepository.SaveChanges();
                         _bookRequestRepository.SaveChanges();
-                        _bookRepository.SaveChanges();
                         transaction.Commit();
 
                         return new BookRequestDto
@@ -97,6 +92,7 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
+                    var detailRequests = _requestDetailRepository.GetAllWithPredicate(i => i.RequestForeignKey == changeStateRequest.RequestId);
                     var requests = _bookRequestRepository.GetOne(i => i.RequestId == changeStateRequest.RequestId);
                     var books = _requestDetailRepository.GetAllWithPredicate(
                         i => i.RequestForeignKey == changeStateRequest.RequestId
@@ -109,6 +105,14 @@ namespace LibraryWebAPI.Services.Implements
                         requests.RequestStatus = Common.Enums.RequestStatusEnum.Reject;
                         requests.RejectedBy = changeStateRequest.UserName;
                         requests.ApprovedBy = null;
+
+                        foreach (var detail in detailRequests)
+                        {
+                            var book = _bookRepository.GetOne(i => i.BookId == detail.BookForeignKey);
+                            book.Borrowed = false;
+                            _bookRepository.Update(book);
+                            _bookRepository.SaveChanges();
+                        }
 
                         _bookRequestRepository.Update(requests);
                         _bookRequestRepository.SaveChanges();
@@ -180,6 +184,11 @@ namespace LibraryWebAPI.Services.Implements
                                 BookForeignKey = bookRequestDetail.BookForeignKey
                             };
 
+                            var book = _bookRepository.GetOne(i => i.BookId == data.BookForeignKey);
+                            book.Borrowed = true;
+
+                            _bookRepository.Update(book);
+                            _bookRepository.SaveChanges();
                             // newBookRequestDetails.Add(data);
                             _requestDetailRepository.Create(data);
                         }

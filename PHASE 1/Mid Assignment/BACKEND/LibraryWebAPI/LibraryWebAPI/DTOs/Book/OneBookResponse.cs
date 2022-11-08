@@ -12,5 +12,6 @@ namespace LibraryWebAPI.DTOs.Book
         public string BookName { get; set; }
         
         public Guid CategoryId { get; set; }
+        public bool Borrowed {get; set;}
     }
 }
