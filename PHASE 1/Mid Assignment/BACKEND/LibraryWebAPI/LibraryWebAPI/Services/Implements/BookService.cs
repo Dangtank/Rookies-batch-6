@@ -35,7 +35,8 @@ namespace LibraryWebAPI.Services.Implements
                             BookId = Guid.NewGuid(),
                             BookName = addBookRequest.BookName,
                             CategoryId = addBookRequest.CategoryId,
-                            CategoryName = category.CategoryName
+                            CategoryName = category.CategoryName,
+                            Borrowed = false
                         };
 
                         _bookRepository.Create(newBook);
@@ -96,7 +97,7 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    var books = _bookRepository.GetAllBook();
+                    var books = _bookRepository.GetAllWithPredicate(i =>i.Borrowed == false);
                     transaction.Commit();
 
                     return books;

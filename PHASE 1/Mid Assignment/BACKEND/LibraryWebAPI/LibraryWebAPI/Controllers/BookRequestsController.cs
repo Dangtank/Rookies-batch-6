@@ -32,7 +32,7 @@ namespace LibraryWebAPI.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("User")]
         public IActionResult GetAllRequestDependUser([FromBody] string userName)
         {
             try

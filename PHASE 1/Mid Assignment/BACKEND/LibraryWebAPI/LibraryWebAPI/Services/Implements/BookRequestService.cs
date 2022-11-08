@@ -38,37 +38,51 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    var detailRequest = _requestDetailRepository.GetOne(i => i.RequestForeignKey == changeStateRequest.RequestId);
+                    
+                    var detailRequests = _requestDetailRepository.GetAllWithPredicate(i => i.RequestForeignKey == changeStateRequest.RequestId);
                     var requests = _bookRequestRepository.GetOne(i => i.RequestId == changeStateRequest.RequestId);
                     var books = _requestDetailRepository.GetAllWithPredicate(
                         i => i.RequestForeignKey == changeStateRequest.RequestId
                     );
 
-                    if (requests != null && books.Any(p => p.ReturnDate != null) && detailRequest != null)
+                    if (requests != null && books.Any(p => p.BookingDate == null) && detailRequests != null)
                     {
                         // requests.RequestedBy = borrowingBookDto.RejectedBy;
                         // requests.RequestedDate = borrowingBookDto.RequestedDate;
                         requests.RequestStatus = Common.Enums.RequestStatusEnum.Approve;
                         requests.RejectedBy = null;
                         requests.ApprovedBy = changeStateRequest.UserName;
-                        detailRequest.BookingDate = DateTime.Now.ToString();
 
-                        _requestDetailRepository.Update(detailRequest);
+                        foreach (var detail in detailRequests)
+                        {
+                            var book = _bookRepository.GetOne(i => i.BookId == detail.BookForeignKey);
+                            book.Borrowed = true;
+
+                            detail.BookingDate = DateTime.Now.ToString();
+                            _bookRepository.Update(book);
+                            _requestDetailRepository.Update(detail);
+                        }
+
                         _bookRequestRepository.Update(requests);
+                        _requestDetailRepository.SaveChanges();
                         _bookRequestRepository.SaveChanges();
+                        _bookRepository.SaveChanges();
                         transaction.Commit();
-                    }
 
-                    return new BookRequestDto
-                    {
-                        RequestId = requests.RequestId,
-                        RequestedBy = requests.RequestedBy,
-                        RequestedDate = requests.RequestedDate,
-                        RequestStatus = requests.RequestStatus,
-                        RejectedBy = requests.RejectedBy,
-                        ApprovedBy = requests.ApprovedBy,
-                    };
+                        return new BookRequestDto
+                        {
+                            RequestId = requests.RequestId,
+                            RequestedBy = requests.RequestedBy,
+                            RequestedDate = requests.RequestedDate,
+                            RequestStatus = requests.RequestStatus,
+                            RejectedBy = requests.RejectedBy,
+                            ApprovedBy = requests.ApprovedBy,
+                        };
+                    }
+                    return null;
                 }
+
+
                 catch
                 {
                     transaction.RollBack();

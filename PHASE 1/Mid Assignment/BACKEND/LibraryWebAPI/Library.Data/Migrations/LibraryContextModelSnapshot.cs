@@ -119,6 +119,12 @@ namespace Library.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("BookName");
 
+                    b.Property<string>("Borrowed")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("Borrowed");
+
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("CategoryId");
@@ -200,7 +206,8 @@ namespace Library.Data.Migrations
 
                     b.HasKey("DetailId");
 
-                    b.HasIndex("BookForeignKey");
+                    b.HasIndex("BookForeignKey")
+                        .IsUnique();
 
                     b.HasIndex("RequestForeignKey");
 
@@ -380,8 +387,8 @@ namespace Library.Data.Migrations
             modelBuilder.Entity("Library.Data.Entities.BookRequestDetail", b =>
                 {
                     b.HasOne("Library.Data.Entities.Book", "Book")
-                        .WithMany("BookRequestDetails")
-                        .HasForeignKey("BookForeignKey")
+                        .WithOne("BookRequestDetail")
+                        .HasForeignKey("Library.Data.Entities.BookRequestDetail", "BookForeignKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -476,7 +483,8 @@ namespace Library.Data.Migrations
 
             modelBuilder.Entity("Library.Data.Entities.Book", b =>
                 {
-                    b.Navigation("BookRequestDetails");
+                    b.Navigation("BookRequestDetail")
+                        .IsRequired();
 
                     b.Navigation("CategoryBooks");
                 });

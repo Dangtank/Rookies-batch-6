@@ -60,7 +60,8 @@ namespace Library.Data.Migrations
                     BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BookName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Borrowed = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -301,7 +302,8 @@ namespace Library.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_BookRequestDetail_BookForeignKey",
                 table: "BookRequestDetail",
-                column: "BookForeignKey");
+                column: "BookForeignKey",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookRequestDetail_RequestForeignKey",
