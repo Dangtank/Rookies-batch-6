@@ -39,9 +39,9 @@ namespace LibraryWebAPI.Services.Implements
                 try
                 {
 
-                    var detailRequests = _requestDetailRepository.GetAllWithPredicate(i => i.RequestForeignKey == changeStateRequest.RequestId);
+                    var detailRequests = _requestDetailRepository.GetAll(i => i.RequestForeignKey == changeStateRequest.RequestId);
                     var requests = _bookRequestRepository.GetOne(i => i.RequestId == changeStateRequest.RequestId);
-                    var books = _requestDetailRepository.GetAllWithPredicate(
+                    var books = _requestDetailRepository.GetAll(
                         i => i.RequestForeignKey == changeStateRequest.RequestId
                     );
 
@@ -92,40 +92,35 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    var detailRequests = _requestDetailRepository.GetAllWithPredicate(i => i.RequestForeignKey == changeStateRequest.RequestId);
-                    var requests = _bookRequestRepository.GetOne(i => i.RequestId == changeStateRequest.RequestId);
-                    var books = _requestDetailRepository.GetAllWithPredicate(
-                        i => i.RequestForeignKey == changeStateRequest.RequestId
-                    );
+                    var request = _bookRequestRepository.GetOne(i => i.RequestId == changeStateRequest.RequestId, a => a.BookRequestDetails);
 
-                    if (requests != null && books.Any(p => p.ReturnDate == null))
+                    if (request != null)
                     {
-                        // requests.RequestedBy = borrowingBookDto.RejectedBy;
-                        // requests.RequestedDate = borrowingBookDto.RequestedDate;
-                        requests.RequestStatus = Common.Enums.RequestStatusEnum.Reject;
-                        requests.RejectedBy = changeStateRequest.UserName;
-                        requests.ApprovedBy = null;
+                        request.RequestStatus = Common.Enums.RequestStatusEnum.Reject;
+                        request.RejectedBy = changeStateRequest.UserName;
+                        request.ApprovedBy = null;
+                        var bookIds = request.BookRequestDetails.Select(x => x.BookForeignKey).ToList();
 
-                        foreach (var detail in detailRequests)
+                        var books = _bookRepository.GetAll(x => bookIds.Contains(x.BookId));
+
+                        foreach (var book in books)
                         {
-                            var book = _bookRepository.GetOne(i => i.BookId == detail.BookForeignKey);
                             book.Borrowed = false;
                             _bookRepository.Update(book);
-                            _bookRepository.SaveChanges();
                         }
 
-                        _bookRequestRepository.Update(requests);
+                        _bookRequestRepository.Update(request);
                         _bookRequestRepository.SaveChanges();
                         transaction.Commit();
 
                         return new BookRequestDto
                         {
-                            RequestId = requests.RequestId,
-                            RequestedBy = requests.RequestedBy,
-                            RequestedDate = requests.RequestedDate,
-                            RequestStatus = requests.RequestStatus,
-                            RejectedBy = requests.RejectedBy,
-                            ApprovedBy = requests.ApprovedBy,
+                            RequestId = request.RequestId,
+                            RequestedBy = request.RequestedBy,
+                            RequestedDate = request.RequestedDate,
+                            RequestStatus = request.RequestStatus,
+                            RejectedBy = request.RejectedBy,
+                            ApprovedBy = request.ApprovedBy,
                         };
                     }
 
@@ -147,7 +142,7 @@ namespace LibraryWebAPI.Services.Implements
                     var books = _bookRepository.GetAll();
                     var categories = _categoryRepository.GetAll();
 
-                    var requestEachUser = _bookRequestRepository.GetAllWithPredicate(
+                    var requestEachUser = _bookRequestRepository.GetAll(
                         i => i.RequestedBy == bookRequestDto.RequestedBy
                     );
 
@@ -188,11 +183,10 @@ namespace LibraryWebAPI.Services.Implements
                             book.Borrowed = true;
 
                             _bookRepository.Update(book);
-                            _bookRepository.SaveChanges();
+                            
                             // newBookRequestDetails.Add(data);
                             _requestDetailRepository.Create(data);
                         }
-
                         int numberBook = bookRequestDto.ListDetails.Count;
                         int numberRequest = requestEachUserAMonth.Count();
 
@@ -206,7 +200,6 @@ namespace LibraryWebAPI.Services.Implements
 
                             _bookRequestRepository.Create(newRequest);
                             _bookRequestRepository.SaveChanges();
-                            _requestDetailRepository.SaveChanges();
                             // _context.SaveChangesAsync();
                             transaction.Commit();
                         }
@@ -257,7 +250,7 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    var requests = _bookRequestRepository.GetAllWithPredicate(
+                    var requests = _bookRequestRepository.GetAll(
                         i => i.RequestedBy == userName
                     );
 

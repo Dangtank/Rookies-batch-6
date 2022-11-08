@@ -32,20 +32,33 @@ namespace Library.Data.Repositories.Implements
             return new EntityDatabseTransaction(_context);
         }
 
-        public T? GetOne(Expression<Func<T, bool>>? predicate)
+        public T? GetOne(Expression<Func<T, bool>>? predicate = null,
+        Expression<Func<T, object>>? includePredicate = null)
         {
-            return predicate == null ? _dbSet.FirstOrDefault() : _dbSet.FirstOrDefault(predicate);
+            return predicate == null ?
+                includePredicate == null ?
+                _dbSet.FirstOrDefault()
+                : _dbSet.Include(includePredicate).FirstOrDefault()
+                : includePredicate == null ? _dbSet.FirstOrDefault(predicate)
+                : _dbSet.Include(includePredicate).FirstOrDefault(predicate);
         }
+
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? predicate = null,
+            Expression<Func<T, bool>>? includePredicate = null)
+        {
+            return predicate == null ?
+               includePredicate == null ? _dbSet : _dbSet.Include(includePredicate)
+               : includePredicate == null ? _dbSet.Where(predicate)
+               : _dbSet.Where(predicate).Include(includePredicate);
+        }
+
 
         public IEnumerable<T> GetAllWithPredicate(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate);
         }
 
-        public IEnumerable<T> GetAll()
-        {
-            return _dbSet;
-        }
+
 
         public int SaveChanges()
         {

@@ -74,15 +74,16 @@ namespace LibraryWebAPI.Services.Implements
                 try
                 {
                     var deleteBook = _bookRepository.GetOne(i => i.BookId == bookId);
-
-                    if (deleteBook != null)
+                    var category = _categoryRepository.GetOne(i => i.CategoryId == deleteBook.CategoryId);
+                    if (deleteBook != null && category != null )
                     {
                         _bookRepository.Delete(deleteBook);
                         _bookRepository.SaveChanges();
                         transaction.Commit();
+                        return true;
                     }
-
-                    return true;
+                    return false;
+                    
                 }
                 catch
                 {
@@ -98,7 +99,7 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    var books = _bookRepository.GetAllWithPredicate(i =>i.Borrowed == false);
+                    var books = _bookRepository.GetAll(i =>i.Borrowed == false);
                     transaction.Commit();
 
                     return books;

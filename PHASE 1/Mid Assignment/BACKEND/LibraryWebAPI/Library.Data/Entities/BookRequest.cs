@@ -5,6 +5,10 @@ namespace Library.Data.Entities
 {
     public class BookRequest
     {
+        public BookRequest()
+        {
+            BookRequestDetails = new List<BookRequestDetail>();
+        }
         // [Key]
         // [Required]
         public Guid RequestId { get; set; }
@@ -15,7 +19,7 @@ namespace Library.Data.Entities
         public string? RejectedBy { get; set; }
         public string? ApprovedBy { get; set; }
 
-        public virtual ICollection<BookRequestDetail>? BookRequestDetails { get; set; }
+        public virtual ICollection<BookRequestDetail> BookRequestDetails { get; set; }
         public virtual ICollection<CategoryBook> CategoryBooks { get; set; } = null!;
     }
 }
