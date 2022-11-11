@@ -13,16 +13,5 @@ namespace Library.Data.Auth
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
 
-        [Required(ErrorMessage = "First Name is required")]
-        [MaxLength(50)]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "Last Name is required")]
-        [MaxLength(50)]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessage = "Gender is required")]
-        [MaxLength(50)]
-        public GenderEnum? Gender { get; set; }
     }
 }

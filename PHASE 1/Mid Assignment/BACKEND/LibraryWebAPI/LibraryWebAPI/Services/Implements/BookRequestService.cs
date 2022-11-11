@@ -61,7 +61,6 @@ namespace LibraryWebAPI.Services.Implements
 
                         _bookRequestRepository.Update(requests);
                         _requestDetailRepository.SaveChanges();
-                        _bookRequestRepository.SaveChanges();
                         transaction.Commit();
 
                         return new BookRequestDto
@@ -105,7 +104,8 @@ namespace LibraryWebAPI.Services.Implements
 
                         foreach (var book in books)
                         {
-                            book.Borrowed = false;
+                            // book.BorrowedBy = request.RequestedBy;
+                            book.BorrowedBy = null;
                             _bookRepository.Update(book);
                         }
 
@@ -180,7 +180,7 @@ namespace LibraryWebAPI.Services.Implements
                             };
 
                             var book = _bookRepository.GetOne(i => i.BookId == data.BookForeignKey);
-                            book.Borrowed = true;
+                            book.BorrowedBy = newRequest.RequestedBy;
 
                             _bookRepository.Update(book);
                             
@@ -199,7 +199,7 @@ namespace LibraryWebAPI.Services.Implements
                         {
 
                             _bookRequestRepository.Create(newRequest);
-                            _bookRequestRepository.SaveChanges();
+                            _bookRepository.SaveChanges();
                             // _context.SaveChangesAsync();
                             transaction.Commit();
                         }

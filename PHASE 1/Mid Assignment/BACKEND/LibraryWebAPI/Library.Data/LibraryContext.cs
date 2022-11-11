@@ -107,8 +107,8 @@ namespace Library.Data
                             .HasMaxLength(50);
 
              modelBuilder.Entity<Book>()
-                            .Property(book => book.Borrowed)
-                            .HasColumnName("Borrowed")
+                            .Property(book => book.BorrowedBy)
+                            .HasColumnName("BorrowedBy")
                             .HasColumnType("nvarchar")
                             .HasMaxLength(50);                
 

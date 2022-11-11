@@ -36,7 +36,7 @@ namespace LibraryWebAPI.Services.Implements
                             BookName = addBookRequest.BookName,
                             CategoryId = addBookRequest.CategoryId,
                             CategoryName = category.CategoryName,
-                            Borrowed = false
+                            BorrowedBy = null
                         };
 
                         _bookRepository.Create(newBook);
@@ -50,7 +50,7 @@ namespace LibraryWebAPI.Services.Implements
                             BookName = newBook.BookName,
                             CategoryId = newBook.CategoryId,
                             CategoryName = category.CategoryName,
-                            Borrowed = false
+                            BorrowedBy = null
                         };
                     }
 
@@ -99,7 +99,7 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    var books = _bookRepository.GetAll(i =>i.Borrowed == false);
+                    var books = _bookRepository.GetAll(i =>i.BorrowedBy == null);
                     transaction.Commit();
 
                     return books;
@@ -130,7 +130,7 @@ namespace LibraryWebAPI.Services.Implements
                             BookId = book.BookId,
                             BookName = book.BookName,
                             CategoryId = book.CategoryId,
-                            Borrowed = book.Borrowed
+                            BorrowedBy = book.BorrowedBy
                         };
                     }
 

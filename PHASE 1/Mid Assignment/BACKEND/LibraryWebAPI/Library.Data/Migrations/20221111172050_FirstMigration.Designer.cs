@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20221108060026_FirstMigration")]
+    [Migration("20221111172050_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,20 +42,6 @@ namespace Library.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("Gender")
-                        .HasMaxLength(50)
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -121,11 +107,10 @@ namespace Library.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("BookName");
 
-                    b.Property<string>("Borrowed")
-                        .IsRequired()
+                    b.Property<string>("BorrowedBy")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
-                        .HasColumnName("Borrowed");
+                        .HasColumnName("BorrowedBy");
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier")

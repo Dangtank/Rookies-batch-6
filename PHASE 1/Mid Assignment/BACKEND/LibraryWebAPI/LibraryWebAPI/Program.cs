@@ -15,6 +15,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCors",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
+});
+
+
 builder.Services.AddControllers();
 var configuration = builder.Configuration;
 builder.Services.AddDbContext<LibraryContext>(opt =>
@@ -25,7 +37,7 @@ builder.Services.AddDbContext<LibraryContext>(opt =>
 builder.Services.AddControllers().AddJsonOptions(o =>
         o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve
     );
-    
+
 builder.Services.AddTransient<IBookService, BookService>();
 builder.Services.AddTransient<IBookRepository, BookRepository>();
 
@@ -82,6 +94,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors("MyCors");
 
 app.UseAuthentication();
 

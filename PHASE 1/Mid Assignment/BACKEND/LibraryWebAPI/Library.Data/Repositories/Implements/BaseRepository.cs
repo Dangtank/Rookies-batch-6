@@ -52,14 +52,6 @@ namespace Library.Data.Repositories.Implements
                : _dbSet.Where(predicate).Include(includePredicate);
         }
 
-
-        public IEnumerable<T> GetAllWithPredicate(Expression<Func<T, bool>> predicate)
-        {
-            return _dbSet.Where(predicate);
-        }
-
-
-
         public int SaveChanges()
         {
             return _context.SaveChanges();

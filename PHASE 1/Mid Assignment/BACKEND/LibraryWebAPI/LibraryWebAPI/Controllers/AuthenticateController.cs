@@ -8,10 +8,13 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Text;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cors;
+using Library.Data.Entities;
 
 namespace LibraryWebAPI.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("MyCors")]
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
@@ -39,10 +42,12 @@ namespace LibraryWebAPI.Controllers
             }
 
             var user = await _userManager.FindByNameAsync(model.Username);
-            
+
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
+
+                // var roleList = new List<RoleEachUser>();
 
                 var authClaims = new List<Claim>
                 {
@@ -53,6 +58,7 @@ namespace LibraryWebAPI.Controllers
                 foreach (var userRole in userRoles)
                 {
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                    // userRole.Add(roleList);
                 }
 
                 var token = CreateToken(authClaims);
@@ -67,15 +73,18 @@ namespace LibraryWebAPI.Controllers
 
                 return Ok(new
                 {
-                    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                    accessToken = new JwtSecurityTokenHandler().WriteToken(token),
                     RefreshToken = refreshToken,
-                    Expiration = token.ValidTo
+                    Expiration = token.ValidTo,
+                    roles = userRoles,
+                    user = model.Username
                 });
             }
             return Unauthorized();
         }
 
         [HttpPost]
+        [EnableCors("MyCors")]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
@@ -87,7 +96,7 @@ namespace LibraryWebAPI.Controllers
                     Message = "User already exists!"
                 });
 
-            ApplicationUser user = new()    
+            ApplicationUser user = new()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -273,7 +282,7 @@ namespace LibraryWebAPI.Controllers
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            
+
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
             if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
                 throw new SecurityTokenException("Invalid token");
