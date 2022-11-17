@@ -2,8 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\Library.Data",
-    "\\Library.Data\\Entities"
+    "\\Library.Data\\Entities",
+    "\\Library.Data\\Repositories",
+    "\\Library.Data\\Repositories\\Implements",
+    "\\LibraryWebAPI",
+    "\\LibraryWebAPI\\Services",
+    "\\LibraryWebAPI\\Services\\Interfaces"
   ],
-  "SelectedNode": "\\LibraryWebAPI.sln",
+  "SelectedNode": "\\Library.Data\\Repositories\\Implements\\EntityDatabseTransaction.cs",
   "PreviewInSolutionExplorer": false
 }

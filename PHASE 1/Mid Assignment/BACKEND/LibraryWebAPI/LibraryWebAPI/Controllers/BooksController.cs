@@ -1,10 +1,13 @@
+using Library.Data.Auth;
 using LibraryWebAPI.DTOs.Book;
 using LibraryWebAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebAPI.Controllers
 {
     [ApiController]
+    [Authorize(Roles = UserRoles.User)]
     [Route("api/[controller]")]
     public class BooksController : ControllerBase
     {
@@ -81,7 +84,7 @@ namespace LibraryWebAPI.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Edit([FromBody] UpdateBookRequest updateBookRequest)
         {
             try

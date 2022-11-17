@@ -4,6 +4,6 @@ namespace Library.Data.Repositories.Interfaces
 {
     public interface IBookRequestRepository : IBaseRepository<BookRequest>
     {
-        
+        IEnumerable<BookRequest> GetAllBookRequest();
     }
 }

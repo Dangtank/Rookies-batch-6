@@ -18,6 +18,6 @@ namespace Library.Data.Entities
         public string? BorrowedBy {get; set;}
 
         public virtual ICollection<CategoryBook> CategoryBooks { get; set; } = null!;
-        public virtual BookRequestDetail BookRequestDetail { get; set; } = null!;
+        public virtual ICollection<BookRequestDetail> BookRequestDetails { get; set; } = null!;
     }
 }

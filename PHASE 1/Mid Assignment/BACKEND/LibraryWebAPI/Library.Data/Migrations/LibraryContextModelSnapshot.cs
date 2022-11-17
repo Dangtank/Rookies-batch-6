@@ -174,10 +174,22 @@ namespace Library.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("BookForeignKey");
 
+                    b.Property<string>("BookName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("BookName");
+
                     b.Property<string>("BookingDate")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("BookingDate");
+
+                    b.Property<string>("BorrowedBy")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("BorrowedBy");
 
                     b.Property<Guid>("RequestForeignKey")
                         .HasMaxLength(50)
@@ -191,8 +203,7 @@ namespace Library.Data.Migrations
 
                     b.HasKey("DetailId");
 
-                    b.HasIndex("BookForeignKey")
-                        .IsUnique();
+                    b.HasIndex("BookForeignKey");
 
                     b.HasIndex("RequestForeignKey");
 
@@ -372,8 +383,8 @@ namespace Library.Data.Migrations
             modelBuilder.Entity("Library.Data.Entities.BookRequestDetail", b =>
                 {
                     b.HasOne("Library.Data.Entities.Book", "Book")
-                        .WithOne("BookRequestDetail")
-                        .HasForeignKey("Library.Data.Entities.BookRequestDetail", "BookForeignKey")
+                        .WithMany("BookRequestDetails")
+                        .HasForeignKey("BookForeignKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -468,8 +479,7 @@ namespace Library.Data.Migrations
 
             modelBuilder.Entity("Library.Data.Entities.Book", b =>
                 {
-                    b.Navigation("BookRequestDetail")
-                        .IsRequired();
+                    b.Navigation("BookRequestDetails");
 
                     b.Navigation("CategoryBooks");
                 });

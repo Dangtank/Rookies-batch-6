@@ -2435,11 +2435,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\LibraryWebAPI.csproj",
+      "projectUniqueName": "D:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\LibraryWebAPI.csproj",
       "projectName": "LibraryWebAPI",
-      "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\LibraryWebAPI.csproj",
+      "projectPath": "D:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\LibraryWebAPI.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\obj\\",
+      "outputPath": "D:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2456,8 +2456,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\Library.Data\\Library.Data.csproj": {
-              "projectPath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\Library.Data\\Library.Data.csproj"
+            "D:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\Library.Data\\Library.Data.csproj": {
+              "projectPath": "D:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\Library.Data\\Library.Data.csproj"
             }
           }
         }

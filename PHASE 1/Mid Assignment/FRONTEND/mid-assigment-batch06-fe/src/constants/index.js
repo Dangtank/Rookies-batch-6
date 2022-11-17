@@ -1,0 +1,9 @@
+export const BASE_URL = 'https://localhost:7233/api';
+export const TOKEN_KEY = 'accessToken';
+export const USER = 'user';
+export const CATEGORY = 'Categories';
+export const BOOK = 'Books';
+export const BORROW_BOOKS = 'BookRequests';
+export const UPDATE_STATUS_BORROW = 'book-borrowing-requests/approve';
+export const BORROW_BOOKS_APPROVE = 'BookRequests/approve';
+export const BORROW_BOOKS_REJECT = 'BookRequests/reject';

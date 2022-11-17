@@ -77,10 +77,10 @@ namespace Library.Data
                             .ToTable("Book")
                             .HasKey(book => book.BookId);// Khoa chinh
 
-            modelBuilder.Entity<Book>()
-                            .HasOne(b => b.BookRequestDetail)
-                            .WithOne(b => b.Book)
-                            .HasForeignKey<BookRequestDetail>(b => b.BookForeignKey);
+            //  modelBuilder.Entity<Book>()
+            //                .HasOne(b => b.BookRequestDetail)
+            //              .WithOne(b => b.Book)
+            //            .HasForeignKey<BookRequestDetail>(b => b.BookForeignKey);
 
             modelBuilder.Entity<Book>()
                             .Property(book => book.BookId)
@@ -106,11 +106,11 @@ namespace Library.Data
                             .HasColumnType("nvarchar")
                             .HasMaxLength(50);
 
-             modelBuilder.Entity<Book>()
-                            .Property(book => book.BorrowedBy)
-                            .HasColumnName("BorrowedBy")
-                            .HasColumnType("nvarchar")
-                            .HasMaxLength(50);                
+            modelBuilder.Entity<Book>()
+                           .Property(book => book.BorrowedBy)
+                           .HasColumnName("BorrowedBy")
+                           .HasColumnType("nvarchar")
+                           .HasMaxLength(50);
 
             #endregion
 
@@ -169,10 +169,10 @@ namespace Library.Data
                             .WithMany(g => g.BookRequestDetails)//1 request nay ket noi nhieu detail
                             .HasForeignKey(s => s.RequestForeignKey);
 
-            // modelBuilder.Entity<BookRequestDetail>()
-            //                 .HasOne<Book>(s => s.Book)//trong detail lay book 
-            //                 .WithMany(g => g.BookRequestDetails)//1 book nay ket noi nhieu detail
-            //                 .HasForeignKey(s => s.BookForeignKey);
+            modelBuilder.Entity<BookRequestDetail>()
+                            .HasOne<Book>(s => s.Book)//trong detail lay book 
+                            .WithMany(g => g.BookRequestDetails)//1 book nay ket noi nhieu detail
+                            .HasForeignKey(s => s.BookForeignKey);
 
             // modelBuilder.Entity<BookBorrowingRequestDetail>()
             //                 .HasOne(s => s.Book)//trong detail lay book 
@@ -188,8 +188,7 @@ namespace Library.Data
             modelBuilder.Entity<BookRequestDetail>()
                            .Property(book => book.BookForeignKey)
                            .HasColumnName("BookForeignKey")
-                           .HasColumnType("uniqueidentifier")
-                           .IsRequired();
+                           .HasColumnType("uniqueidentifier");
 
             // modelBuilder.Entity<BookBorrowingRequestDetail>()
             //                .Property(book => book.BookId)
@@ -206,6 +205,18 @@ namespace Library.Data
             modelBuilder.Entity<BookRequestDetail>()
                             .Property(b => b.ReturnDate)
                             .HasColumnName("ReturnDate")
+                            .HasColumnType("nvarchar")
+                            .HasMaxLength(50);
+
+            modelBuilder.Entity<BookRequestDetail>()
+                            .Property(b => b.BorrowedBy)
+                            .HasColumnName("BorrowedBy")
+                            .HasColumnType("nvarchar")
+                            .HasMaxLength(50);
+
+            modelBuilder.Entity<BookRequestDetail>()
+                            .Property(b => b.BookName)
+                            .HasColumnName("BookName")
                             .HasColumnType("nvarchar")
                             .HasMaxLength(50);
 

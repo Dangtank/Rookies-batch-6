@@ -24,6 +24,7 @@ namespace LibraryWebAPI.Services.Implements
         {
 
             using (var transaction = _bookRepository.DatabaseTransaction())
+
                 try
                 {
                     var category = _categoryRepository.GetOne(i => i.CategoryId == addBookRequest.CategoryId);
@@ -41,7 +42,6 @@ namespace LibraryWebAPI.Services.Implements
 
                         _bookRepository.Create(newBook);
                         _bookRepository.SaveChanges();
-                        // _context.SaveChangesAsync();
                         transaction.Commit();
 
                         return new AddBookResponse
@@ -75,13 +75,16 @@ namespace LibraryWebAPI.Services.Implements
                 {
                     var deleteBook = _bookRepository.GetOne(i => i.BookId == bookId);
                     var category = _categoryRepository.GetOne(i => i.CategoryId == deleteBook.CategoryId);
+
                     if (deleteBook != null && category != null )
                     {
                         _bookRepository.Delete(deleteBook);
                         _bookRepository.SaveChanges();
                         transaction.Commit();
+                        
                         return true;
                     }
+
                     return false;
                     
                 }

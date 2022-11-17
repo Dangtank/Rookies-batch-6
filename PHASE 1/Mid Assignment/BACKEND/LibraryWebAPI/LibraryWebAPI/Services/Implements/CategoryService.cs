@@ -39,6 +39,7 @@ namespace LibraryWebAPI.Services.Implements
                             CategoryName = newCategory.CategoryName,
                         };
                     }
+                    
                     return null;
                 }
                 catch

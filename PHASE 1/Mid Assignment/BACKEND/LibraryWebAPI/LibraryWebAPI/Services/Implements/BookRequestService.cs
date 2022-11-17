@@ -38,7 +38,6 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-
                     var detailRequests = _requestDetailRepository.GetAll(i => i.RequestForeignKey == changeStateRequest.RequestId);
                     var requests = _bookRequestRepository.GetOne(i => i.RequestId == changeStateRequest.RequestId);
                     var books = _requestDetailRepository.GetAll(
@@ -47,8 +46,6 @@ namespace LibraryWebAPI.Services.Implements
 
                     if (requests != null && books.Any(p => p.BookingDate == null) && detailRequests != null)
                     {
-                        // requests.RequestedBy = borrowingBookDto.RejectedBy;
-                        // requests.RequestedDate = borrowingBookDto.RequestedDate;
                         requests.RequestStatus = Common.Enums.RequestStatusEnum.Approve;
                         requests.RejectedBy = null;
                         requests.ApprovedBy = changeStateRequest.UserName;
@@ -73,10 +70,9 @@ namespace LibraryWebAPI.Services.Implements
                             ApprovedBy = requests.ApprovedBy,
                         };
                     }
+
                     return null;
                 }
-
-
                 catch
                 {
                     transaction.RollBack();
@@ -97,14 +93,12 @@ namespace LibraryWebAPI.Services.Implements
                     {
                         request.RequestStatus = Common.Enums.RequestStatusEnum.Reject;
                         request.RejectedBy = changeStateRequest.UserName;
-                        request.ApprovedBy = null;
-                        var bookIds = request.BookRequestDetails.Select(x => x.BookForeignKey).ToList();
 
+                        var bookIds = request.BookRequestDetails.Select(x => x.BookForeignKey).ToList();
                         var books = _bookRepository.GetAll(x => bookIds.Contains(x.BookId));
 
                         foreach (var book in books)
                         {
-                            // book.BorrowedBy = request.RequestedBy;
                             book.BorrowedBy = null;
                             _bookRepository.Update(book);
                         }
@@ -137,6 +131,7 @@ namespace LibraryWebAPI.Services.Implements
         public BookRequestDto CreateRequest(BookRequestDto bookRequestDto)
         {
             using (var transaction = _bookRequestRepository.DatabaseTransaction())
+
                 try
                 {
                     var books = _bookRepository.GetAll();
@@ -166,27 +161,26 @@ namespace LibraryWebAPI.Services.Implements
                             ApprovedBy = null
                         };
 
-                        // var newBookRequestDetails = new List<BookRequestDetail>();
-
                         foreach (var bookRequestDetail in bookRequestDto.ListDetails)
                         {
+                            var book = _bookRepository.GetOne(i => i.BookId == bookRequestDetail.BookForeignKey);
+
                             var data = new BookRequestDetail
-                            {
+                            {   
                                 DetailId = Guid.NewGuid(),
                                 BookingDate = null,
                                 ReturnDate = null,
                                 RequestForeignKey = _requestId,
-                                BookForeignKey = bookRequestDetail.BookForeignKey
+                                BookForeignKey = bookRequestDetail.BookForeignKey,
+                                BorrowedBy = bookRequestDto.RequestedBy,
+                                BookName = book.BookName
                             };
 
-                            var book = _bookRepository.GetOne(i => i.BookId == data.BookForeignKey);
                             book.BorrowedBy = newRequest.RequestedBy;
-
-                            _bookRepository.Update(book);
-                            
-                            // newBookRequestDetails.Add(data);
+                            _bookRepository.Update(book);                           
                             _requestDetailRepository.Create(data);
                         }
+
                         int numberBook = bookRequestDto.ListDetails.Count;
                         int numberRequest = requestEachUserAMonth.Count();
 
@@ -200,18 +194,10 @@ namespace LibraryWebAPI.Services.Implements
 
                             _bookRequestRepository.Create(newRequest);
                             _bookRepository.SaveChanges();
-                            // _context.SaveChangesAsync();
                             transaction.Commit();
                         }
 
                         return null;
-
-                        // return new AddBookResponse
-                        // {
-                        //     BookId = newBook.BookId,
-                        //     BookName = newBook.BookName,
-                        //     CategoryId = newBook.CategoryId,
-                        // };
                     }
 
                     return null;
@@ -230,7 +216,7 @@ namespace LibraryWebAPI.Services.Implements
 
                 try
                 {
-                    var requests = _bookRequestRepository.GetAll();
+                    var requests = _bookRequestRepository.GetAllBookRequest();
 
                     transaction.Commit();
 
@@ -244,17 +230,16 @@ namespace LibraryWebAPI.Services.Implements
                 }
         }
 
-        public IEnumerable<BookRequest> GetAllRequestDependUser(string userName)
+        public IEnumerable<BookRequestDetail> GetAllRequestDetailDependUser(string userName)
         {
             using (var transaction = _bookRequestRepository.DatabaseTransaction())
 
                 try
                 {
-                    var requests = _bookRequestRepository.GetAll(
-                        i => i.RequestedBy == userName
+                    var requests = _requestDetailRepository.GetAll(
+                        i => i.BorrowedBy == userName
                     );
 
-                    // var requestDetails = _requestDetailRepository.GetAllWithPredicate(i => i.RequestId == requests.Where(i => i.RequestId == ));
                     transaction.Commit();
 
                     return requests;

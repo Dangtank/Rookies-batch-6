@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2hdnZqO7wduKPQEriOWH1GhWByuCzJCsY/Des4kT8YBpI5GiEnhth+LgXql/ryBBwS75f4NVkvZQCGzyZgRH9g==",
+  "dgSpecHash": "B7gJiVqikQgoobQTyHMRk2+BjhW6GUwbIrT9MMvAqSrIiIXda2k2+Virlpg2DKqPqdsG+xqN5Y9sdiZ41ysEcA==",
   "success": true,
-  "projectFilePath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\LibraryWebAPI.csproj",
+  "projectFilePath": "D:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\LibraryWebAPI\\LibraryWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Legion\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.10\\microsoft.aspnetcore.authentication.jwtbearer.6.0.10.nupkg.sha512",

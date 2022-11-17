@@ -9,7 +9,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cors;
-using Library.Data.Entities;
 
 namespace LibraryWebAPI.Controllers
 {

@@ -1,12 +1,14 @@
-using Library.Data.Entities;
+using Library.Data.Auth;
 using LibraryWebAPI.DTOs.BookRequest;
 using LibraryWebAPI.DTOs.BookRequestDto;
 using LibraryWebAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebAPI.Controllers
 {
     [ApiController]
+    [Authorize(Roles = UserRoles.User)]
     [Route("api/[controller]")]
     public class BookRequestsController : ControllerBase
     {
@@ -32,12 +34,12 @@ namespace LibraryWebAPI.Controllers
             }
         }
 
-        [HttpGet("User")]
-        public IActionResult GetAllRequestDependUser([FromBody] string userName)
+        [HttpGet("{userName}")]
+        public IActionResult GetAllRequestDetailDependUser(string userName)
         {
             try
             {
-                var data = _bookRequestService.GetAllRequestDependUser(userName);
+                var data = _bookRequestService.GetAllRequestDetailDependUser(userName);
 
                 return Ok(data);
             }
@@ -47,7 +49,7 @@ namespace LibraryWebAPI.Controllers
             }
         }
 
-        [HttpPost("Approve")]
+        [HttpPost("approve")]
         public IActionResult ChangeStateToApprove([FromBody] ChangeStateRequest changeStateRequest)
         {
             try
@@ -77,7 +79,7 @@ namespace LibraryWebAPI.Controllers
             }
         }
 
-        [HttpPost("Reject")]
+        [HttpPost("reject")]
         public IActionResult ChangeStateToReject([FromBody] ChangeStateRequest changeStateRequest)
         {
             try

@@ -7,7 +7,7 @@ namespace LibraryWebAPI.Services.Interfaces
     public interface IBookRequestService
     {
         IEnumerable<BookRequest> GetAllRequest();
-        IEnumerable<BookRequest> GetAllRequestDependUser(string userName);
+        IEnumerable<BookRequestDetail> GetAllRequestDetailDependUser(string userName);
         BookRequestDto CreateRequest(BookRequestDto bookRequestDto);
         BookRequestDto ChangeStateToApprove(ChangeStateRequest changeStateRequest);
         BookRequestDto ChangeStateToReject(ChangeStateRequest changeStateRequest);

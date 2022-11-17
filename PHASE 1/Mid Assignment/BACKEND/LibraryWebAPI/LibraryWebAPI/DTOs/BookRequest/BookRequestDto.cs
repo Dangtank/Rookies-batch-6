@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using Common.Enums;
 using Library.Data.Entities;
 
@@ -6,7 +5,6 @@ namespace LibraryWebAPI.DTOs.BookRequestDto
 {
     public class BookRequestDto
     {
-        // [Key]
         public Guid RequestId { get; set; }
         public string? RequestedBy { get; set; }
         public DateTime RequestedDate { get; set; }
@@ -15,6 +13,5 @@ namespace LibraryWebAPI.DTOs.BookRequestDto
         public string? ApprovedBy { get; set; }
 
         public virtual ICollection<ListDetail>? ListDetails { get; set; }
-        // public virtual ICollection<CategoryBook> CategoryBooks { get; set; } = null!;
     }
 }

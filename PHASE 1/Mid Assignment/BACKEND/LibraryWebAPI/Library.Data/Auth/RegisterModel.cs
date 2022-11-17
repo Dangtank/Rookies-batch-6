@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Common.Enums;
 
 namespace Library.Data.Auth
 {

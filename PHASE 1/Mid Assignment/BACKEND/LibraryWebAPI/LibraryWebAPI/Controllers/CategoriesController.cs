@@ -1,11 +1,13 @@
-
+using Library.Data.Auth;
 using LibraryWebAPI.DTOs.Category;
 using LibraryWebAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebAPI.Controllers
 {
     [ApiController]
+    [Authorize(Roles = UserRoles.User)]
     [Route("api/[controller]")]
     public class CategoriesController : ControllerBase
     {
@@ -80,7 +82,7 @@ namespace LibraryWebAPI.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Edit([FromBody] UpdateCategoryRequest updateCategoryRequest)
         {
             try

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H28p54V2DO+BZ4NUlk6WWeAy9VVzn2rzBCkVQuKra51pherVr9qzJbHas6NYr1HlXCVzTQsQKhjDW45MDjrsxQ==",
+  "dgSpecHash": "wblK8PsiBm+X5Iuh/Y+Q5jDxWXiYqY1yaUaXysTa7vIQKr+DAHYY3vPmldR1+yvoe7dToisNWDLGwx1DqTDwcQ==",
   "success": true,
-  "projectFilePath": "D:\\ROOKIES-6\\Rookies batch 6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\Library.Data\\Library.Data.csproj",
+  "projectFilePath": "D:\\ROOKIES-6-GITHUB\\Rookies-batch-6\\PHASE 1\\Mid Assignment\\BACKEND\\LibraryWebAPI\\Library.Data\\Library.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Legion\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.10\\microsoft.aspnetcore.cryptography.internal.6.0.10.nupkg.sha512",
